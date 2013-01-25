@@ -1,0 +1,5 @@
+CROSSTABS 
+  /TABLES = grade race lepflag FRL SpEd BY M_part R_part 
+  /FORMAT=AVALUE TABLES 
+  /CELLS=COUNT ROW 
+  /COUNT ROUND CELL.

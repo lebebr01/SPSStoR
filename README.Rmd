@@ -1,0 +1,59 @@
+SPSS to R
+=================
+  
+A set of functions that takes *SPSS* syntax as input and outputs *R* commands 
+to do the same analysis or data management tasks.
+
+Current Features
+===============
+* Aggregate
+* Correlations
+* Crosstab
+* Sort Cases
+
+
+Upcoming Features
+=================
+* Master SPSStoR function
+* Descriptives
+* Value Labels
+* Further arguments for above current features
+* Modeling functions
+    + t-test
+    + analysis of variance
+    + regression
+    + generalized models
+* if else statements
+* graphics
+
+Aggregate to R Example
+======================
+```{r setup, echo = FALSE}
+  setwd("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/")
+```
+
+```{r agg}
+  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExamp.txt", syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", syntax = "data.table")
+```
+
+Correlation to R Example
+=========================
+```{r corr}
+  correlations_to_cor("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+```
+
+Crosstab to R Example
+======================
+```{r crosstab}
+  crosstabs_to_table("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+```
+
+Sort Cases to R Example
+=======================
+```{r sortcase}
+  sortcases_to_order("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+  sortcases_to_order("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
+```
