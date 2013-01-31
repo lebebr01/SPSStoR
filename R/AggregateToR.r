@@ -7,7 +7,7 @@
 
 aggregate_to_agg <- function(file, syntax){
 
-  require(data.table)
+  #require(data.table)
   #if(syntax == "plyr") require(plyr) #currently not supported
   
   x <- readLines(file)
@@ -51,10 +51,11 @@ aggregate_to_agg <- function(file, syntax){
     funct <- paste("list(", funct, ")", sep = "")
   }  
   
-    finMat <- matrix(nrow = length(funct) + 1, ncol = 1)
+    finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
     finMat[1] <- "\\#x is the name of your data frame"
+    finMat[2] <- paste('library(data.table)', sep = '')
     for(i in 1:length(funct)){
-      finMat[i+1] <- paste(object, "x[", aggVarsOrd, ", ", funct[i], ", ", aggVarsBy, "]", sep = "")
+      finMat[i+2] <- paste(object, "x[", aggVarsOrd, ", ", funct[i], ", ", aggVarsBy, "]", sep = "")
     }
 
  finMat

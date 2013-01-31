@@ -10,12 +10,12 @@ Current Features
 * Correlations
 * Crosstab
 * Sort Cases
+* Descriptives
 
 
 Upcoming Features
 =================
 * Master SPSStoR function
-* Descriptives
 * Value Labels
 * Further arguments for above current features
 * Modeling functions
@@ -29,31 +29,42 @@ Upcoming Features
 Aggregate to R Example
 ======================
 ```{r setup, echo = FALSE}
-  setwd("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/")
+  setwd("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/")
 ```
 
 ```{r agg}
-  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExamp.txt", syntax = "data.table")
-  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", syntax = "data.table")
-  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", syntax = "data.table")
-  aggregate_to_agg("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
+                   syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
+                   syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", 
+                   syntax = "data.table")
+  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", 
+                   syntax = "data.table")
 ```
 
 Correlation to R Example
 =========================
 ```{r corr}
-  correlations_to_cor("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+  correlations_to_cor("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
 ```
 
 Crosstab to R Example
 ======================
 ```{r crosstab}
-  crosstabs_to_table("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+  crosstabs_to_table("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
 ```
 
 Sort Cases to R Example
 =======================
 ```{r sortcase}
-  sortcases_to_order("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
-  sortcases_to_order("C:/Users/e520062/Desktop/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
+  sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+  sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
+```
+
+Descriptives to R Example
+========================
+```{r desc}
+  descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
+  descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
 ```

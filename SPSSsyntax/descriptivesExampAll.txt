@@ -1,0 +1,3 @@
+DESCRIPTIVES
+ VARIABLES=longmon tollmon equipmon cardmon wiremon
+ /STATISTICS=ALL .
