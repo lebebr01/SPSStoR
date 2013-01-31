@@ -26,13 +26,22 @@ Upcoming Features
 * if else statements
 * graphics
 
+Installing Function
+===================
+```{r install, eval = FALSE}
+library(devtools)
+install_github("SPSStoR", username = "lebebr01")
+library(SPSStoR)
+```
+
 Aggregate to R Example
 ======================
 ```{r setup, echo = FALSE}
   setwd("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/")
 ```
 
-```{r agg}
+```{r agg, warning = FALSE, message = FALSE}
+ library(SPSStoR)
   aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
                    syntax = "data.table")
   aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
@@ -45,26 +54,26 @@ Aggregate to R Example
 
 Correlation to R Example
 =========================
-```{r corr}
+```{r corr, warning = FALSE, message = FALSE}
   correlations_to_cor("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
 ```
 
 Crosstab to R Example
 ======================
-```{r crosstab}
+```{r crosstab, warning = FALSE, message = FALSE}
   crosstabs_to_table("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
 ```
 
 Sort Cases to R Example
 =======================
-```{r sortcase}
+```{r sortcase, warning = FALSE, message = FALSE}
   sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
   sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
 ```
 
 Descriptives to R Example
 ========================
-```{r desc}
+```{r desc, warning = FALSE, message = FALSE}
   descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
   descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
 ```

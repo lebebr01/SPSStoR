@@ -1,5 +1,6 @@
+#' Aggregate to R
 #' 
-#' 
+#' Converts SPSS aggregate syntax to aggregate in R.
 #' 
 #' @param file path of text file with spss crosstab syntax
 #' @param syntax should plyr or data.table be used default to data.table

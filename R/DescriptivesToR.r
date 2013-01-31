@@ -1,5 +1,6 @@
+#' Descriptives to R
 #' 
-#' 
+#' Converts SPSS descriptives syntax to R syntax
 #' 
 #' @param file path of text file with spss crosstab syntax
 #' @export 
