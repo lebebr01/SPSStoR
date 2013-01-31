@@ -4,7 +4,7 @@
 #' @param file path of text file with spss crosstab syntax
 #' @export 
 
-correlations_to_cor <- function(file){
+correlations_to_r <- function(file){
   
   x <- readLines(file)
   x <- gsub("^\\s+|\\s+$", "", x)

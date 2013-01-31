@@ -5,7 +5,7 @@
 #' @param file path of text file with spss crosstab syntax
 #' @export 
 
-descriptives_to_descmat <- function(file){
+descriptives_to_r <- function(file){
   
   x <- readLines(file)
   x <- gsub("^\\s+|\\s+$", "", x)

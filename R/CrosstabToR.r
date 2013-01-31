@@ -4,7 +4,7 @@
 #' @param file path of text file with spss crosstab syntax
 #' @export 
 
-crosstabs_to_table <- function(file){
+crosstabs_to_r <- function(file){
   require(catspec)
   require(stringr)
   

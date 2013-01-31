@@ -4,7 +4,7 @@
 #' @param file path of text file with spss crosstab syntax
 #' @export 
 
-sortcases_to_order <- function(file){
+sortcases_to_r <- function(file){
   
   x <- readLines(file)
   x <- gsub("^\\s+|\\s+$", "", x)

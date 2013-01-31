@@ -6,7 +6,7 @@
 #' @param syntax should plyr or data.table be used default to data.table
 #' @export 
 
-aggregate_to_agg <- function(file, syntax){
+aggregate_to_r <- function(file, syntax){
 
   #require(data.table)
   #if(syntax == "plyr") require(plyr) #currently not supported
