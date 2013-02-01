@@ -2,7 +2,7 @@
 #' 
 #' Converts SPSS descriptives syntax to R syntax
 #' 
-#' @param file path of text file with spss crosstab syntax
+#' @param file path of text file with spss descriptives syntax
 #' @export 
 
 descriptives_to_r <- function(file){

@@ -11,15 +11,20 @@ Current Features
 * Crosstab
 * Sort Cases
 * Descriptives
+* One sample t-test
+* Independent sample t-test
+* Get for sav files
 
 
 Upcoming Features
 =================
 * Master SPSStoR function
+* More Get commands to read in csv, txt, etc.
+* Dataset commands
 * Value Labels
 * Further arguments for above current features
 * Modeling functions
-    + t-test
+    + t-test (two sample with cut score and paired)
     + analysis of variance
     + regression
     + generalized models
@@ -42,38 +47,58 @@ Aggregate to R Example
 
 ```{r agg, warning = FALSE, message = FALSE}
  library(SPSStoR)
-  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
+  aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
                    syntax = "data.table")
-  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
+  aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
                    syntax = "data.table")
-  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", 
+  aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", 
                    syntax = "data.table")
-  aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", 
+  aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", 
                    syntax = "data.table")
 ```
 
 Correlation to R Example
 =========================
 ```{r corr, warning = FALSE, message = FALSE}
-  correlations_to_cor("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+  correlations_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
 ```
 
 Crosstab to R Example
 ======================
 ```{r crosstab, warning = FALSE, message = FALSE}
-  crosstabs_to_table("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+  crosstabs_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
 ```
 
 Sort Cases to R Example
 =======================
 ```{r sortcase, warning = FALSE, message = FALSE}
-  sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
-  sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
+  sortcases_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+  sortcases_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
 ```
 
 Descriptives to R Example
 ========================
 ```{r desc, warning = FALSE, message = FALSE}
-  descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
-  descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
+  descriptives_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
+  descriptives_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
 ```
+
+One Sample T-test Example
+=========================
+```{r ttestOS}
+  ttest_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestOneSampExamp.txt")
+  
+```
+
+Indpendent Sample T-test Example
+===============================
+```{r ttestIS}
+  ttest_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestTwoSampValExamp.txt")
+```
+
+Get Command Example
+===================
+```{r get}
+  get_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getExamp.txt")
+```
+

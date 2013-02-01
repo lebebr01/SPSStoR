@@ -11,15 +11,20 @@ Current Features
 * Crosstab
 * Sort Cases
 * Descriptives
+* One sample t-test
+* Independent sample t-test
+* Get for sav files
 
 
 Upcoming Features
 =================
 * Master SPSStoR function
+* More Get commands to read in csv, txt, etc.
+* Dataset commands
 * Value Labels
 * Further arguments for above current features
 * Modeling functions
-    + t-test
+    + t-test (two sample with cut score and paired)
     + analysis of variance
     + regression
     + generalized models
@@ -44,7 +49,7 @@ Aggregate to R Example
 
 ```r
 library(SPSStoR)
-aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
+aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
     syntax = "data.table")
 ```
 
@@ -56,7 +61,7 @@ aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt
 ```
 
 ```r
-aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
+aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
     syntax = "data.table")
 ```
 
@@ -68,7 +73,7 @@ aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBr
 ```
 
 ```r
-aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", 
+aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt", 
     syntax = "data.table")
 ```
 
@@ -82,7 +87,7 @@ aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBr
 ```
 
 ```r
-aggregate_to_agg("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", 
+aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt", 
     syntax = "data.table")
 ```
 
@@ -100,7 +105,7 @@ Correlation to R Example
 =========================
 
 ```r
-correlations_to_cor("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+correlations_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
 ```
 
 ```
@@ -114,7 +119,7 @@ Crosstab to R Example
 ======================
 
 ```r
-crosstabs_to_table("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+crosstabs_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
 ```
 
 ```
@@ -137,7 +142,7 @@ Sort Cases to R Example
 =======================
 
 ```r
-sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+sortcases_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
 ```
 
 ```
@@ -147,7 +152,7 @@ sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.t
 ```
 
 ```r
-sortcases_to_order("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
+sortcases_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
 ```
 
 ```
@@ -161,7 +166,7 @@ Descriptives to R Example
 ========================
 
 ```r
-descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
+descriptives_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
 ```
 
 ```
@@ -172,7 +177,7 @@ descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptive
 ```
 
 ```r
-descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
+descriptives_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
 ```
 
 ```
@@ -182,4 +187,51 @@ descriptives_to_descmat("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptive
 ## [3,] "library(e1071)"                                                                                                                           
 ## [4,] "with(x, descmat(x = list(longmon, tollmon, equipmon, cardmon, wiremon), mean, semean, sd, var, kurtosis, skewness, range, min, max, sum))"
 ```
+
+
+One Sample T-test Example
+=========================
+
+```r
+ttest_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestOneSampExamp.txt")
+```
+
+```
+##      [,1]                                               
+## [1,] "\\#x is the name of your data frame"              
+## [2,] "with(x, t.test(brake, mu = 322, conf.level = .90)"
+```
+
+
+Indpendent Sample T-test Example
+===============================
+
+```r
+ttest_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestTwoSampValExamp.txt")
+```
+
+```
+##      [,1]                                                                            
+## [1,] "\\#x is the name of your data frame"                                           
+## [2,] "library(car)"                                                                  
+## [3,] "leveneTest(dollars ~ insert, data = x)"                                        
+## [4,] "t.test(dollars ~ insert, data = x, mu =0, conf.level = .95, var.equal = TRUE)" 
+## [5,] "t.test(dollars ~ insert, data = x, mu =0, conf.level = .95, var.equal = FALSE)"
+```
+
+
+Get Command Example
+===================
+
+```r
+get_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getExamp.txt")
+```
+
+```
+##      [,1]                                                       
+## [1,] "\\#x is the name of your data frame"                      
+## [2,] "library(foreign)"                                         
+## [3,] "x <- read.spss('/data/hubtemp.sav', to.data.frame = TRUE)"
+```
+
 
