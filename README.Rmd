@@ -18,9 +18,9 @@ Current Features
 
 Upcoming Features
 =================
-* Master SPSStoR function
 * More Get commands to read in csv, txt, etc.
 * Dataset commands
+* Master SPSStoR function
 * Value Labels
 * Further arguments for above current features
 * Modeling functions

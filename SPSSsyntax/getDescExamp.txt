@@ -1,0 +1,5 @@
+GET FILE='/data/hubtemp.sav'.
+
+DESCRIPTIVES
+VARIABLES=longmon tollmon equipmon cardmon wiremon
+/STATISTICS=MEAN STDDEV MIN MAX .
