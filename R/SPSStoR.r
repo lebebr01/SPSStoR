@@ -1,21 +1,24 @@
 #' Master SPSS to R function
 #'
+#' @param file path of text file that has spss syntax
 #'
-SPSS_to_R <- function(file){
+spss_to_r <- function(file){
   
   x <- readLines(file)
   x <- gsub("^\\s+|\\s+$", "", x)
   
   x <- subset(x, grepl(".+", x) == TRUE)
   
-  endFuncLoc <- grep("\\.", x)
+  endFuncLoc <- grep("\\.$", x)
   n <- length(endFuncLoc)
   
   funcLoc <- vector("numeric", length = n)
   funcLoc[1] <- 1
-  for(i in 2:n){
-    funcLoc[i] <- endFuncLoc[n-1]+1
-  }
+  if(length(endFuncLoc > 1)){
+    for(i in 2:n){
+      funcLoc[i] <- endFuncLoc[n-1]+1
+    }
+  }  
   
   spssfunc <- sapply(funcLoc, function(k) grep("^.+ |^.+", x[k], value = TRUE))
   
@@ -34,8 +37,14 @@ SPSS_to_R <- function(file){
   xChunks <- sapply(1:length(funcChunks), function(m) 
     eval(parse(text = paste("x[", funcChunks[m], "]"))))
   
-  rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
-    do.call(as.character(spssToR[x]), xChunks[x])))
+  if(length(is.list(xChunks) == FALSE)){
+    FUN <- match.fun(as.character(spssToR))
+    rsyntax <- FUN(xChunks)
+  } else {
+    rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
+      do.call(as.character(spssToR[x]), xChunks[x])))
+  }
+  
   
   return(rsyntax)
 }
