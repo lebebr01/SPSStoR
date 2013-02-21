@@ -2,13 +2,10 @@
 #' 
 #' Converts SPSS descriptives syntax to R syntax
 #' 
-#' @param file path of text file with spss descriptives syntax
+#' @param x SPSS syntax - read in by SPSStoR function
 #' @export 
 
-descriptives_to_r <- function(file){
-  
-  x <- readLines(file)
-  x <- gsub("^\\s+|\\s+$", "", x)
+descriptives_to_r <- function(x){
   
   varsLoc <- grep("variables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))

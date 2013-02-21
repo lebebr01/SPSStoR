@@ -1,15 +1,11 @@
 #' 
 #' 
 #' 
-#' @param file path of text file with spss crosstab syntax
+#' @param x SPSS syntax - read in by SPSStoR function
 #' @export 
 
-crosstabs_to_r <- function(file){
-  require(catspec)
-  require(stringr)
-  
-  x <- readLines(file)
-  x <- gsub("^\\s+|\\s+$", "", x)
+crosstabs_to_r <- function(x){
+
   varsLoc <- grep("\\/tables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))
   vars <- gsub("^\\s+|\\s+$", "", vars)

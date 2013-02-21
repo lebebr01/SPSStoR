@@ -14,13 +14,13 @@ Current Features
 * One sample t-test
 * Independent sample t-test
 * Get for sav files
+* Master SPSStoR function
 
 
 Upcoming Features
 =================
 * More Get commands to read in csv, txt, etc.
 * Dataset commands
-* Master SPSStoR function
 * Value Labels
 * Further arguments for above current features
 * Modeling functions

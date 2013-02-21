@@ -1,14 +1,11 @@
 #' 
 #' 
 #' 
-#' @param file path of text file with spss crosstab syntax
+#' @param x SPSS syntax - read in by SPSStoR function
 #' @export 
 
-sortcases_to_r <- function(file){
-  
-  x <- readLines(file)
-  x <- gsub("^\\s+|\\s+$", "", x)
-  
+sortcases_to_r <- function(x){
+
   loc <- grep("sort cases", x, ignore.case = TRUE)
   byLoc <- grep("by", x, ignore.case = TRUE)
   

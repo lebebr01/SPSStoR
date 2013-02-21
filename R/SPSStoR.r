@@ -21,11 +21,21 @@ SPSS_to_R <- function(file){
   
   if(any(grepl("=",spssfunc)) == TRUE){
     trbl <- grep("=", spssfunc)
+    #sapply(1:length(trbl), function(k) unlist(strsplit(spssfunc[k], " "))[1])
     for(k in trbl){
-      spssfunc[k] <- unlist(strsplit(spssfunc[k], " "))[1]
+     spssfunc[k] <- unlist(strsplit(spssfunc[k], " "))[1]
     }    
   }
   
-  spssfunc <- tolower(spssfunc)
+  spssToR <- as.list(paste(tolower(spssfunc), "_to_r", sep = ""))
   
+  funcChunks <- paste(funcLoc, endFuncLoc, sep = ":")
+  
+  xChunks <- sapply(1:length(funcChunks), function(m) 
+    eval(parse(text = paste("x[", funcChunks[m], "]"))))
+  
+  rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
+    do.call(as.character(spssToR[x]), xChunks[x])))
+  
+  return(rsyntax)
 }

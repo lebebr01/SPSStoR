@@ -2,17 +2,11 @@
 #' 
 #' Converts SPSS aggregate syntax to aggregate in R.
 #' 
-#' @param file path of text file with spss crosstab syntax
+#' @param x SPSS syntax - read in by SPSStoR function
 #' @param syntax should plyr or data.table be used default to data.table
 #' @export 
 
-aggregate_to_r <- function(file, syntax){
-
-  #require(data.table)
-  #if(syntax == "plyr") require(plyr) #currently not supported
-  
-  x <- readLines(file)
-  x <- gsub("^\\s+|\\s+$", "", x)
+aggregate_to_r <- function(x, syntax){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){
     aggVarsOrd <- NULL 

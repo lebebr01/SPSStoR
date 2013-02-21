@@ -2,14 +2,11 @@
 #' 
 #' Converts SPSS t-test syntax to R syntax
 #' 
-#' @param file path of text file with spss t-test syntax
+#' @param x SPSS syntax - read in by SPSStoR function
 #' @export 
 
-ttest_to_r <- function(file){
-  
-  x <- readLines(file)
-  x <- gsub("^\\s+|\\s+$", "", x)
-  
+ttest_to_r <- function(x){
+
   varsLoc <- grep("variables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))
   depVars <- paste(unlist(strsplit(gsub("^\\s+|\\s+$", "", vars), " ")), collapse = ", ")
