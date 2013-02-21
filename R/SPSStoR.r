@@ -21,6 +21,7 @@ spss_to_r <- function(file){
   }  
   
   spssfunc <- sapply(funcLoc, function(k) grep("^.+ |^.+", x[k], value = TRUE))
+  spssfunc <- gsub("-", "", spssfunc)
   
   if(any(grepl("=",spssfunc)) == TRUE){
     trbl <- grep("=", spssfunc)
@@ -43,8 +44,7 @@ spss_to_r <- function(file){
   } else {
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
       do.call(as.character(spssToR[x]), xChunks[x])))
-  }
+  }  
   
-  
-  return(rsyntax)
+  rsyntax
 }

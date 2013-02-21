@@ -5,6 +5,7 @@
 #' @export 
 
 crosstabs_to_r <- function(x){
+  require(plyr)
 
   varsLoc <- grep("\\/tables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))
