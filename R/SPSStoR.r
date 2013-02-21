@@ -14,7 +14,7 @@ spss_to_r <- function(file){
   
   funcLoc <- vector("numeric", length = n)
   funcLoc[1] <- 1
-  if(length(endFuncLoc > 1)){
+  if(length(endFuncLoc) > 1){
     for(i in 2:n){
       funcLoc[i] <- endFuncLoc[n-1]+1
     }

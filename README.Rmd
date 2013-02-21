@@ -47,7 +47,7 @@ Aggregate to R Example
 
 ```{r agg, warning = FALSE, message = FALSE}
  library(SPSStoR)
-  aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt", 
+  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt")
                    syntax = "data.table")
   aggregate_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt", 
                    syntax = "data.table")
