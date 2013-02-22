@@ -47,7 +47,7 @@ Multiple commands
 ------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getDescExamp.txt")
+spss_to_r("getDescExamp.txt")
 ```
 
 ```
@@ -68,7 +68,7 @@ Aggregate to R Example
 
 ```r
 library(SPSStoR)
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt")
+spss_to_r("aggregateExamp.txt")
 ```
 
 ```
@@ -79,7 +79,7 @@ spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt")
 ```
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt")
+spss_to_r("aggregateExampNoBreak.txt")
 ```
 
 ```
@@ -90,7 +90,7 @@ spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt
 ```
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt")
+spss_to_r("aggregateExampNoBreakNoOutfile.txt")
 ```
 
 ```
@@ -103,7 +103,7 @@ spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOu
 ```
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt")
+spss_to_r("aggregateExampNoOutfile.txt")
 ```
 
 ```
@@ -120,7 +120,7 @@ Correlation to R Example
 -------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+spss_to_r("correlationsExamp.txt")
 ```
 
 ```
@@ -134,7 +134,7 @@ Crosstab to R Example
 ----------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+spss_to_r("crosstabExamp.txt")
 ```
 
 ```
@@ -157,7 +157,7 @@ Sort Cases to R Example
 -----------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+spss_to_r("sortCasesExamp.txt")
 ```
 
 ```
@@ -167,7 +167,7 @@ spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
 ```
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
+spss_to_r("sortCasesExamp2.txt")
 ```
 
 ```
@@ -181,7 +181,7 @@ Descriptives to R Example
 -------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
+spss_to_r("descriptivesExamp.txt")
 ```
 
 ```
@@ -192,7 +192,7 @@ spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
 ```
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
+spss_to_r("descriptivesExampAll.txt")
 ```
 
 ```
@@ -208,7 +208,7 @@ One Sample T-test Example
 --------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestOneSampExamp.txt")
+spss_to_r("ttestOneSampExamp.txt")
 ```
 
 ```
@@ -222,7 +222,7 @@ Indpendent Sample T-test Example
 ----------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestTwoSampValExamp.txt")
+spss_to_r("ttestTwoSampValExamp.txt")
 ```
 
 ```
@@ -239,7 +239,7 @@ Get Command Example
 -------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getExamp.txt")
+spss_to_r("getExamp.txt")
 ```
 
 ```
