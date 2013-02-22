@@ -14,12 +14,8 @@ spss_to_r <- function(file){
   
   funcLoc <- vector("numeric", length = n)
   funcLoc <- sapply(1:n, function(i) endFuncLoc[i-1]+1)
-  #funcLoc[1] <- 1
-  #if(length(endFuncLoc) > 1){
-    #for(i in 2:n){
-     # funcLoc[i] <- endFuncLoc[i-1]+1
-    #}
-  #}  
+  funcLoc[[1]] <- 1
+  
   
   spssfunc <- sapply(funcLoc, function(k) grep("^.+ |^.+", x[k], value = TRUE))
   spssfunc <- gsub("-", "", spssfunc)
