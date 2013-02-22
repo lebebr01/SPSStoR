@@ -16,7 +16,7 @@ spss_to_r <- function(file){
   funcLoc[1] <- 1
   if(length(endFuncLoc) > 1){
     for(i in 2:n){
-      funcLoc[i] <- endFuncLoc[n-1]+1
+      funcLoc[i] <- endFuncLoc[i-1]+1
     }
   }  
   
@@ -29,6 +29,14 @@ spss_to_r <- function(file){
     for(k in trbl){
      spssfunc[k] <- unlist(strsplit(spssfunc[k], " "))[1]
     }    
+  }
+  
+  if(any(grepl(" ", spssfunc) == TRUE)){
+    loc <- grep(' ', spssfunc)
+    for(l in loc){
+      spssfunc[l] <- paste(strsplit(spssfunc[l], ' ')[[1]][1:2], collapse = "")
+    }
+    
   }
   
   spssToR <- as.list(paste(tolower(spssfunc), "_to_r", sep = ""))
