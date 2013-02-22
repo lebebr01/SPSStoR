@@ -51,7 +51,7 @@ spss_to_r <- function(file){
     rsyntax <- FUN(xChunks)
   } else {
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
-      do.call(as.character(spssToR[x]), xChunks[x])))
+      do.call(spssToR[[x]], xChunks[[x]])))
   }  
   
   rsyntax
