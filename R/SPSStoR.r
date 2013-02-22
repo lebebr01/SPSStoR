@@ -46,12 +46,12 @@ spss_to_r <- function(file){
   xChunks <- sapply(1:length(funcChunks), function(m) 
     eval(parse(text = paste("x[", funcChunks[m], "]"))))
   
-  if(length(is.list(xChunks) == FALSE)){
+  if(is.list(xChunks) == FALSE){
     FUN <- match.fun(as.character(spssToR))
     rsyntax <- FUN(xChunks)
   } else {
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
-      do.call(spssToR[[x]], xChunks[[x]])))
+      do.call(spssToR[[x]], xChunks[x])))
   }  
   
   rsyntax
