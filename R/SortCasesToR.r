@@ -1,5 +1,6 @@
+#' Sort Cases 
 #' 
-#' 
+#' Convert SPSS sort cases command to an R function.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @export 
