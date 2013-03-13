@@ -43,7 +43,7 @@ ttest_to_r <- function(x){
     finMat <- matrix(ncol = 1, nrow = 2)
   }
   
-  finMat[1] <- "\\#x is the name of your data frame"
+  finMat[1] <- "#x is the name of your data frame"
   if(is.character(groupVar) == TRUE){
     finMat[2] <- "library(car)"
     finMat[3] <- paste("leveneTest(", depVars, " ~ ", groupVar, ", data = x)", sep = '')

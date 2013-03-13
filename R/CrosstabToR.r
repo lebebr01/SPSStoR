@@ -33,7 +33,7 @@ crosstabs_to_r <- function(x){
     tabs$cells <- "n"
   }
  finMat <- matrix(nrow=nrow(tabs) + 1, ncol = 1)
- finMat[1] <- "\\#x is the name of your data frame"
+ finMat[1] <- "#x is the name of your data frame"
  for(i in 1:nrow(tabs)){
    finMat[i+1] <- paste("ctab(with(x, table(", tabs$row[i],",", 
                       tabs$col[i], ")), type = c(", tabs$cells[i], "))", sep = "") 

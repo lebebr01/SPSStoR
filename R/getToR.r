@@ -22,7 +22,7 @@ get_to_r <- function(x){
     finMat <- matrix(ncol = 1, nrow = 3)
   }
   
-  finMat[1] <- "\\#x is the name of your data frame"
+  finMat[1] <- "#x is the name of your data frame"
   finMat[2] <- "library(foreign)"
   finMat[3] <- paste("x <- read.spss(", path, ", to.data.frame = TRUE)", sep = '')
   

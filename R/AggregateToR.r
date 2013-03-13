@@ -47,7 +47,7 @@ aggregate_to_r <- function(x, syntax){
   }  
   
     finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
-    finMat[1] <- "\\#x is the name of your data frame"
+    finMat[1] <- "#x is the name of your data frame"
     finMat[2] <- 'library(data.table)'
     for(i in 1:length(funct)){
       finMat[i+2] <- paste(object, "x[", aggVarsOrd, ", ", funct[i], ", ", aggVarsBy, "]", sep = "")

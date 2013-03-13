@@ -17,7 +17,7 @@ correlations_to_r <- function(x){
   }
     
   finMat <- matrix(nrow = 2, ncol = 1)
-  finMat[1] <- "\\#x is the name of your data frame"
+  finMat[1] <- "#x is the name of your data frame"
   finMat[2] <- paste("with(x, cor(cbind(", corVars, ")),", missing, ")", sep = "")
     
   finMat
