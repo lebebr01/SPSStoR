@@ -15,6 +15,7 @@ Current Features
 * Independent sample t-test
 * Get for sav files
 * Master SPSStoR function
+* graphics
 
 
 Upcoming Features
@@ -22,14 +23,14 @@ Upcoming Features
 * More Get commands to read in csv, txt, etc.
 * Dataset commands
 * Value Labels
-* Further arguments for above current features
+* Further arguments for descriptives
 * Modeling functions
     + t-test (two sample with cut score and paired)
     + analysis of variance
     + regression
     + generalized models
 * if else statements
-* graphics
+* Examine
 
 Installing Function
 ===================
@@ -102,4 +103,11 @@ Get Command Example
 ```{r get}
   spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getExamp.txt")
 ```
+
+Graphics
+----------------
+```{r graphics}
+  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/graphExamps.txt")
+```
+
 
