@@ -51,5 +51,8 @@ spss_to_r <- function(file){
       do.call(spssToR[[x]], xChunks[x])))
   }  
   
+  rownames(rsyntax) <- 1:nrow(rsyntax)
+  colnames(rsyntax) <- "R Syntax"
+  
   rsyntax
 }
