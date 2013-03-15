@@ -50,6 +50,8 @@ spss_to_r <- function(file){
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
       do.call(spssToR[[x]], xChunks[x])))
   }  
+  
+  rsyntax <- c("# x is the name of your data frame", rsyntax)
 
   rsyntax
 }
