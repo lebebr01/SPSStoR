@@ -28,13 +28,13 @@ descriptives_to_r <- function(x){
     
   if(grepl("skewness|kurtosis", stats) == TRUE){
     finMat <- matrix(ncol = 1, nrow = 3)
-    finMat[2] <- 'library(SPSStoR)'
-    finMat[3] <- 'library(e1071)'
-    finMat[4] <- paste('with(x, descmat(x = list(', descVars, '), ', stats, '))', sep = '')
+    finMat[1] <- 'library(SPSStoR)'
+    finMat[2] <- 'library(e1071)'
+    finMat[3] <- paste('with(x, descmat(x = list(', descVars, '), ', stats, '))', sep = '')
   } else {
     finMat <- matrix(ncol = 1, nrow = 2)
-    finMat[2] <- 'library(SPSStoR)'
-    finMat[3] <- paste('with(x, descmat(x = list(', descVars, '), ', stats, '))', sep = '')
+    finMat[1] <- 'library(SPSStoR)'
+    finMat[2] <- paste('with(x, descmat(x = list(', descVars, '), ', stats, '))', sep = '')
   }
   
  finMat
