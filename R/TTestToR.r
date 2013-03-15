@@ -38,21 +38,21 @@ ttest_to_r <- function(x){
   } else { groupVar <- 0}
   
   if(is.character(groupVar) == TRUE){
-    finMat <- matrix(ncol = 1, nrow = 5)
+    finMat <- matrix(ncol = 1, nrow = 4)
   } else {
-    finMat <- matrix(ncol = 1, nrow = 2)
+    finMat <- matrix(ncol = 1, nrow = 1)
   }
   
-  finMat[1] <- "#x is the name of your data frame"
+  
   if(is.character(groupVar) == TRUE){
-    finMat[2] <- "library(car)"
-    finMat[3] <- paste("leveneTest(", depVars, " ~ ", groupVar, ", data = x)", sep = '')
-    finMat[4] <- paste("t.test(", depVars, " ~ ", groupVar, ", data = x, mu = ", testVal, ", conf.level = ",
+    finMat[1] <- "library(car)"
+    finMat[2] <- paste("leveneTest(", depVars, " ~ ", groupVar, ", data = x)", sep = '')
+    finMat[3] <- paste("t.test(", depVars, " ~ ", groupVar, ", data = x, mu = ", testVal, ", conf.level = ",
                        ciVal, ", var.equal = TRUE)", sep = '')
-    finMat[5] <- paste("t.test(", depVars, " ~ ", groupVar, ", data = x, mu = ", testVal, ", conf.level = ",
+    finMat[4] <- paste("t.test(", depVars, " ~ ", groupVar, ", data = x, mu = ", testVal, ", conf.level = ",
                        ciVal, ", var.equal = FALSE)", sep = '')
   } else{
-    finMat[2] <- paste("with(x, t.test(", depVars, ", mu = ", testVal, ", conf.level = ", ciVal, ")", 
+    finMat[1] <- paste("with(x, t.test(", depVars, ", mu = ", testVal, ", conf.level = ", ciVal, ")", 
                        sep = '')
   }
     

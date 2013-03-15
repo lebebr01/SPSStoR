@@ -19,12 +19,11 @@ get_to_r <- function(x){
   fileType <- substr(path, (which(strsplit(path, '')[[1]]=='.')+1), nchar(path)-1)
   
   if(fileType == "sav"){
-    finMat <- matrix(ncol = 1, nrow = 3)
+    finMat <- matrix(ncol = 1, nrow = 2)
   }
   
-  finMat[1] <- "#x is the name of your data frame"
-  finMat[2] <- "library(foreign)"
-  finMat[3] <- paste("x <- read.spss(", path, ", to.data.frame = TRUE)", sep = '')
+  finMat[1] <- "library(foreign)"
+  finMat[2] <- paste("x <- read.spss(", path, ", to.data.frame = TRUE)", sep = '')
   
 finMat
 }

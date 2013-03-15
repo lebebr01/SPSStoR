@@ -29,9 +29,8 @@ sortcases_to_r <- function(x){
   
   sortVars <- paste(sortVars, collapse = ", ")
   
-  finMat <- matrix(nrow = 2, ncol = 1)
-  finMat[1] <- "#x is the name of your data frame"
-  finMat[2] <- paste("x <- x[order(", sortVars, "), ]", sep = "")
+  finMat <- matrix(nrow = 1, ncol = 1)
+  finMat[1] <- paste("x <- x[order(", sortVars, "), ]", sep = "")
   
  finMat
 }

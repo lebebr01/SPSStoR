@@ -75,16 +75,14 @@ graph_to_r <- function(x){
   } else {normdist <- ""}
 
   if(typesub == "matrix"){
-    finMat <- matrix(nrow = 3, ncol = 1)
-    finMat[1] <- "#x is the name of your data frame"
-    finMat[2] <- "library(ggplot2); library(GGally)"
-    finMat[3] <- paste("ggpairs(x[, ", aestxt, "])", sep = "")
+    finMat <- matrix(nrow = 2, ncol = 1)
+    finMat[1] <- "library(ggplot2); library(GGally)"
+    finMat[2] <- paste("ggpairs(x[, ", aestxt, "])", sep = "")
   } else {
-    finMat <- matrix(nrow = 4, ncol = 1)
-    finMat[1] <- "#x is the name of your data frame"
-    finMat[2] <- "library(ggplot2)"
-    finMat[3] <- paste("p <- ggplot(x, ", aestxt, ") + ", type, typeOpts, normdist, titleggplot, sep = '')
-    finMat[4] <- "p"
+    finMat <- matrix(nrow = 3, ncol = 1)
+    finMat[1] <- "library(ggplot2)"
+    finMat[2] <- paste("p <- ggplot(x, ", aestxt, ") + ", type, typeOpts, normdist, titleggplot, sep = '')
+    finMat[3] <- "p"
   }
     
   finMat
