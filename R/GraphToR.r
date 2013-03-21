@@ -1,4 +1,4 @@
-#' Graphics 
+#' Graphics
 #' 
 #' Convert SPSS graph command to an R graph call using ggplot2.
 #' 
