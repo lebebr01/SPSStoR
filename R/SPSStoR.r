@@ -52,6 +52,7 @@ spss_to_r <- function(file){
   }  
   
   rsyntax <- c("# x is the name of your data frame", rsyntax)
+  rsyntax <- rsyntax[!duplicated(rsyntax, incomparables = "p")]
 
   rsyntax
 }

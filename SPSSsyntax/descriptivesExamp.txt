@@ -1,3 +1,7 @@
 DESCRIPTIVES
  VARIABLES=longmon tollmon equipmon cardmon wiremon
  /STATISTICS=MEAN STDDEV MIN MAX .
+
+DESCRIPTIVES
+ VARIABLES=longmon tollmon equipmon cardmon wiremon
+ /STATISTICS=ALL .

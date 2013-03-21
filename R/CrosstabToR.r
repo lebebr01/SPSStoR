@@ -32,9 +32,10 @@ crosstabs_to_r <- function(x){
   } else {
     tabs$cells <- "n"
   }
- finMat <- matrix(nrow=nrow(tabs), ncol = 1)
+ finMat <- matrix(nrow=nrow(tabs) + 1, ncol = 1)
+  finMat[1] <- "library(catspec)"
  for(i in 1:nrow(tabs)){
-   finMat[i] <- paste("ctab(with(x, table(", tabs$row[i],",", 
+   finMat[i+1] <- paste("ctab(with(x, table(", tabs$row[i],",", 
                       tabs$col[i], ")), type = c(", tabs$cells[i], "))", sep = "") 
  }
   finMat
