@@ -15,7 +15,7 @@ Current Features
 * Independent sample t-test
 * Get for sav files
 * Master SPSStoR function
-* graphics
+* Graphics
 
 
 Upcoming Features
@@ -53,9 +53,6 @@ Aggregate to R Example
 -----------------------
 ```{r agg, warning = FALSE, message = FALSE}
   spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt")
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreak.txt")
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoBreakNoOutfile.txt")
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExampNoOutfile.txt")
 ```
 
 Correlation to R Example
@@ -74,14 +71,12 @@ Sort Cases to R Example
 -----------------------
 ```{r sortcase, warning = FALSE, message = FALSE}
   spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp2.txt")
 ```
 
 Descriptives to R Example
 -------------------------
 ```{r desc, warning = FALSE, message = FALSE}
   spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExampAll.txt")
 ```
 
 One Sample T-test Example
