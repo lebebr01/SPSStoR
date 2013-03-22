@@ -16,6 +16,7 @@ Current Features
 * Get for sav files
 * Master SPSStoR function
 * Graphics
+* Frequencies
 
 
 Upcoming Features
@@ -221,6 +222,33 @@ spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/graphExamps.txt")
 ## [23] "p <- ggplot(x, aes(y = mean(PF), x = W.L)) + geom_area()"                                                                                                                                          
 ## [24] "p"
 ```
+
+
+Frequencies
+---------------
+
+```r
+spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/frequenciesExamp.txt")
+```
+
+```
+##  [1] "# x is the name of your data frame"                                                
+##  [2] "with(x, table(is.na(dept)))"                                                       
+##  [3] "with(x, table(is.na(race)))"                                                       
+##  [4] "with(x, table(dept))"                                                              
+##  [5] "with(x, table(race))"                                                              
+##  [6] "ggplot(x, aes(x = factor(1), fill = dept)) + geom_bar() + coord_polar(theta = 'y')"
+##  [7] "ggplot(x, aes(x = factor(1), fill = race)) + geom_bar() + coord_polar(theta = 'y')"
+##  [8] "with(x, table(is.na(sale)))"                                                       
+##  [9] "library(SPSStoR)"                                                                  
+## [10] "library(e1071)"                                                                    
+## [11] "with(x, descmat(x = list(sale), sd, min, max, mean, median, skewness, kurtosis))"  
+## [12] "quantile(x, probs = seq(0, 1, 1/4), type = 6)"                                     
+## [13] "quantile(x, probs = seq(0, 1, 1/5), type = 6)"                                     
+## [14] "quantile(x, probs = c(10, 25, 33.3, 66.7, 75), type = 6)"                          
+## [15] "ggplot(x, aes(x = factor(1), fill = sale)) + geom_histogram()"
+```
+
 
 
 
