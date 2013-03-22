@@ -22,7 +22,7 @@ frequencies_to_r <- function(x) {
   
   if(any(grepl("^\\/stat", x, ignore.case = TRUE))){
     statOut <- descriptives_to_r(x)
-  } else { statsOut <- "" }
+  } else { statOut <- "" }
   
   if(any(grepl("^\\/ntiles\\s?=", x, ignore.case = TRUE))){
     ntileLoc <- grep("^\\/ntiles\\s?=", x, ignore.case = TRUE)

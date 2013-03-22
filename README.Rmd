@@ -16,6 +16,7 @@ Current Features
 * Get for sav files
 * Master SPSStoR function
 * Graphics
+* Frequencies
 
 
 Upcoming Features
@@ -103,5 +104,12 @@ Graphics
 ```{r graphics}
   spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/graphExamps.txt")
 ```
+
+Frequencies
+---------------
+```{r frequencies}
+  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/frequenciesExamp.txt")
+```
+
 
 
