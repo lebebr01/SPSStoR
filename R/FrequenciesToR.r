@@ -55,4 +55,11 @@ frequencies_to_r <- function(x) {
       paste("ggplot(x, aes(x = factor(1), fill = ", freqVars[ii], ")) + geom_histogram()", sep = ''))
   } else { histogramG <- "" }
   
+  missingOut <- sapply(1:length(freqVars), function(ii) 
+    paste("with(x, table(", freqVars[ii], "))", sep = ''))
+  
+  finMat <- c(missingOut, freqOut, statOut, ntilesOut, percentileOut, pieG, barG, histogramG)
+  finMat <- subset(finMat, grepl(".+", finMat) == TRUE)
+  
+  finMat  
 }
