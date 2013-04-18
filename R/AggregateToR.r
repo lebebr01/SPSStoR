@@ -2,11 +2,15 @@
 #' 
 #' Converts SPSS aggregate syntax to aggregate in R.
 #' 
+#' This function returns a matrix that highlights R syntax that mimics
+#' the analysis done in SPSS.  The R syntax used by default is from the 
+#' data.table package as this allows the ability to easily save aggregated 
+#' variables back into the original R data frame.
+#' 
 #' @param x SPSS syntax - read in by SPSStoR function
-#' @param syntax should plyr or data.table be used default to data.table
 #' @export 
 
-aggregate_to_r <- function(x, syntax){
+aggregate_to_r <- function(x){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){
     aggVarsOrd <- NULL 
@@ -46,10 +50,11 @@ aggregate_to_r <- function(x, syntax){
     funct <- paste("list(", funct, ")", sep = "")
   }  
   
-    finMat <- matrix(nrow = length(funct) + 1, ncol = 1)
+    finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
     finMat[1] <- 'library(data.table)'
+    finMat[2] <- 'x <- data.table(x)'
     for(i in 1:length(funct)){
-      finMat[i+1] <- paste(object, "x[", aggVarsOrd, ", ", funct[i], ", ", aggVarsBy, "]", sep = "")
+      finMat[i+2] <- paste(object, "x[", aggVarsOrd, ", ", funct[i], ", ", aggVarsBy, "]", sep = "")
     }
 
  finMat

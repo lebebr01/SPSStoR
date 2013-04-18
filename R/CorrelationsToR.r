@@ -1,4 +1,6 @@
+#' Correlations to R
 #' 
+#' Converts SPSS correlations syntax to comparable R syntax.
 #' 
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
