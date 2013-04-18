@@ -1,0 +1,13 @@
+\name{ttest_to_r}
+\alias{ttest_to_r}
+\title{T-test to R}
+\usage{
+  ttest_to_r(x)
+}
+\arguments{
+  \item{x}{SPSS syntax - read in by SPSStoR function}
+}
+\description{
+  Converts SPSS t-test syntax to R syntax
+}
+

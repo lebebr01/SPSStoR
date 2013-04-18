@@ -9,7 +9,8 @@
 #' 
 #' A single column matrix is used to return the R code.  If a R command is long
 #' it does not wrap the code and so copy and pasting may be needed.  As an alternative,
-#' the R syntax can be saved to an R script file.
+#' the R syntax can be saved to an R script file. No column names or row names are 
+#' printed when saving this script file.
 #'
 #' @param file Path of text file that has SPSS syntax
 #' @param writeRscript TRUE or FALSE variable to write R script.
