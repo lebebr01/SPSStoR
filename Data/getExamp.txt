@@ -1,1 +1,0 @@
-GET FILE='/data/hubtemp.sav'.

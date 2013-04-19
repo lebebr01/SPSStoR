@@ -1,7 +1,0 @@
-GET FILE='/data/hubtemp.sav'.
-
-SORT CASES DIVISION STORE (A) AGE (D).
-
-DESCRIPTIVES
-VARIABLES=longmon tollmon equipmon cardmon wiremon
-/STATISTICS=MEAN STDDEV MIN MAX .
