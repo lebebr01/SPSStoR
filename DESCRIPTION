@@ -11,6 +11,7 @@ Depends:
     stats,
     methods,
     stringr
+LazyData: true
 Collate:
     'AggregateToR.r'
     'CorrelationsToR.r'
