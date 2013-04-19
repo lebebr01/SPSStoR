@@ -1,2 +1,2 @@
 VALUE LABELS  STATE 'TEX' "TEXAS" 'TEN' "TENNESSEE"
-                    'MIN' "MINNESOTA".
+'MIN' "MINNESOTA".
