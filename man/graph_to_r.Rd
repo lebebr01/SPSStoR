@@ -1,6 +1,6 @@
 \name{graph_to_r}
 \alias{graph_to_r}
-\title{Graphics}
+\title{Graphics to R}
 \usage{
   graph_to_r(x)
 }

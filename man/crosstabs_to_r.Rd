@@ -8,6 +8,6 @@
   \item{x}{SPSS syntax - read in by SPSStoR function}
 }
 \description{
-  Converts SPSS crosstab syntax to comparable R syntax.
+  Converts SPSS crosstab syntax to R table syntax.
 }
 

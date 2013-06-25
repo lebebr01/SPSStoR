@@ -8,6 +8,7 @@
   \item{x}{SPSS syntax - read in by SPSStoR function}
 }
 \description{
-  Converts SPSS correlations syntax to comparable R syntax.
+  Converts SPSS correlations routine syntax to R
+  correlation syntax
 }
 

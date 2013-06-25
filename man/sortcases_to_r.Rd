@@ -1,6 +1,6 @@
 \name{sortcases_to_r}
 \alias{sortcases_to_r}
-\title{Sort Cases}
+\title{Sort Cases to R}
 \usage{
   sortcases_to_r(x)
 }

@@ -1,6 +1,6 @@
 \name{frequencies_to_r}
 \alias{frequencies_to_r}
-\title{Frequencies}
+\title{Frequencies to R}
 \usage{
   frequencies_to_r(x)
 }
