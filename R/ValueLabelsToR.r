@@ -1,5 +1,6 @@
+#' Value labels to R
 #' 
-#' 
+#' Converts SPSS value label syntax to R code#' 
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @export 

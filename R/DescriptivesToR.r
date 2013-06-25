@@ -39,5 +39,4 @@ descriptives_to_r <- function(x){
   }
   
  finMat
-  
 }

@@ -1,6 +1,6 @@
 #' Frequencies to R
 #' 
-#' Convert SPSS frequencies command to an R syntax.
+#' Convert SPSS frequencies command to R syntax.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @export 

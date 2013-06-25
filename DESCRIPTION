@@ -4,5 +4,25 @@ Author: Brandon LeBeau <lebea027@umn.edu>
 Version: 0.1
 License: GPL-2
 Title: SPSS syntax to R syntax
-Description: This package turns SPSS syntax 
-       into R syntax.
+Description: This package turns SPSS syntax
+    into comparable R syntax.
+Depends:
+    R (>= 2.15),
+    stats,
+    methods,
+    stringr
+LazyData: true
+Collate:
+    'AggregateToR.r'
+    'CorrelationsToR.r'
+    'CrosstabToR.r'
+    'DescriptivesToR.r'
+    'FrequenciesToR.r'
+    'GraphToR.r'
+    'SPSStoR.r'
+    'SortCasesToR.r'
+    'TTestToR.r'
+    'ValueLabelsToR.r'
+    'descmat.r'
+    'getToR.r'
+    'semean.r'
