@@ -1,7 +1,11 @@
 #' Master SPSS to R function
+#' 
+#' This function converts a SPSS syntax file that has more than one 
+#' routine involved.  It then calls other functions as needed for each
+#' SPSS routine to convert to R syntax.
 #'
 #' @param file path of text file that has spss syntax
-#'
+#' @export 
 spss_to_r <- function(file){
   
   x <- readLines(file)

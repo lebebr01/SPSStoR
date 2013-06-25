@@ -1,11 +1,11 @@
+#' Crosstab to R
 #' 
-#' 
+#' Converts SPSS crosstab syntax to R table syntax.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @import stringr
 #' @export 
-
 crosstabs_to_r <- function(x){
-  require(stringr)
 
   varsLoc <- grep("\\/tables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))

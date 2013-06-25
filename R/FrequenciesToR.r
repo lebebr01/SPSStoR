@@ -1,10 +1,9 @@
-#' Frequencies
+#' Frequencies to R
 #' 
 #' Convert SPSS frequencies command to an R syntax.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @export 
-#' 
 frequencies_to_r <- function(x) {
   
   varsLoc <- grep("variables\\s?=", x, ignore.case = TRUE)

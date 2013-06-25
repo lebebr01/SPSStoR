@@ -1,13 +1,11 @@
-#' Graphics
+#' Graphics to R
 #' 
 #' Convert SPSS graph command to an R graph call using ggplot2.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @import stringr
 #' @export 
-
 graph_to_r <- function(x){
-  
-  library(stringr)  
   
   titleLoc <- grep("\\/title\\s?=", x, ignore.case = TRUE)
   if(length(titleLoc) > 0){

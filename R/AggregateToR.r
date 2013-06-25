@@ -5,7 +5,6 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param syntax should plyr or data.table be used default to data.table
 #' @export 
-
 aggregate_to_r <- function(x, syntax){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){
