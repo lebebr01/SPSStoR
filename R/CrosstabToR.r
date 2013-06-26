@@ -3,7 +3,7 @@
 #' Converts SPSS crosstab syntax to R table syntax.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
-#' @import stringr
+#' @importFrom stringr str_count
 #' @export 
 crosstabs_to_r <- function(x){
 

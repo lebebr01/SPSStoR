@@ -3,7 +3,7 @@
 #' Convert SPSS graph command to an R graph call using ggplot2.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
-#' @import stringr
+#' @importFrom stringr str_c
 #' @export 
 graph_to_r <- function(x){
   
