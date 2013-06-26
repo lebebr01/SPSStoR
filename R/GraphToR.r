@@ -4,7 +4,6 @@
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @importFrom stringr str_c
-#' @export 
 graph_to_r <- function(x){
   
   titleLoc <- grep("\\/title\\s?=", x, ignore.case = TRUE)

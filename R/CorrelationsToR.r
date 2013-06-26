@@ -3,7 +3,6 @@
 #' Converts SPSS correlations routine syntax to R correlation syntax
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
-#' @export 
 correlations_to_r <- function(x){
   
   varsLoc <- grep("variables\\s?=", x, ignore.case = TRUE)

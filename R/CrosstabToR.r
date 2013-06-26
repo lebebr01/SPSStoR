@@ -4,7 +4,6 @@
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @importFrom stringr str_count
-#' @export 
 crosstabs_to_r <- function(x){
 
   varsLoc <- grep("\\/tables\\s?=", x, ignore.case = TRUE)
