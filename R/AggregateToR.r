@@ -8,6 +8,7 @@
 #' variables back into the original R data frame.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @export
 aggregate_to_r <- function(x){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){

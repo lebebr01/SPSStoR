@@ -46,69 +46,69 @@ Examples
 Multiple commands
 ------------------
 ```{r multiple}
- spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getDescExamp.txt")
+ spss_to_r("inst/SPSSsyntax/getDescExamp.txt")
 ```
 
 
 Aggregate to R Example
 -----------------------
 ```{r agg, warning = FALSE, message = FALSE}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt")
+  spss_to_r("inst/SPSSsyntax/aggregateExamp.txt")
 ```
 
 Correlation to R Example
 -------------------------
 ```{r corr, warning = FALSE, message = FALSE}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+  spss_to_r("inst/SPSSsyntax/correlationsExamp.txt")
 ```
 
 Crosstab to R Example
 ----------------------
 ```{r crosstab, warning = FALSE, message = FALSE}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+  spss_to_r("inst/SPSSsyntax/crosstabExamp.txt")
 ```
 
 Sort Cases to R Example
 -----------------------
 ```{r sortcase, warning = FALSE, message = FALSE}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+  spss_to_r("inst/SPSSsyntax/sortCasesExamp.txt")
 ```
 
 Descriptives to R Example
 -------------------------
 ```{r desc, warning = FALSE, message = FALSE}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
+  spss_to_r("inst/SPSSsyntax/descriptivesExamp.txt")
 ```
 
 One Sample T-test Example
 --------------------------
 ```{r ttestOS}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestOneSampExamp.txt")
+  spss_to_r("inst/SPSSsyntax/ttestOneSampExamp.txt")
   
 ```
 
 Indpendent Sample T-test Example
 ----------------------------
 ```{r ttestIS}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestTwoSampValExamp.txt")
+  spss_to_r("inst/SPSSsyntax/ttestTwoSampValExamp.txt")
 ```
 
 Get Command Example
 -------------------
 ```{r get}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getExamp.txt")
+  spss_to_r("inst/SPSSsyntax/getExamp.txt")
 ```
 
 Graphics
 ----------------
 ```{r graphics}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/graphExamps.txt")
+  spss_to_r("inst/SPSSsyntax/graphExamps.txt")
 ```
 
 Frequencies
 ---------------
 ```{r frequencies}
-  spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/frequenciesExamp.txt")
+  spss_to_r("inst/SPSSsyntax/frequenciesExamp.txt")
 ```
 
 

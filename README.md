@@ -49,7 +49,7 @@ Multiple commands
 ------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getDescExamp.txt")
+spss_to_r("inst/SPSSsyntax/getDescExamp.txt")
 ```
 
 ```
@@ -67,20 +67,21 @@ Aggregate to R Example
 -----------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/aggregateExamp.txt")
+spss_to_r("inst/SPSSsyntax/aggregateExamp.txt")
 ```
 
 ```
 ##  [1] "# x is the name of your data frame"                                                                                                           
 ##  [2] "library(data.table)"                                                                                                                          
-##  [3] "temp <- x[order(gender, marital), list(age_mean=mean(age), age_median=median(age), income_median=median(income)), by = list(gender, marital)]"
-##  [4] "temp <- x[, list(age_mean=mean(age), age_median=median(age), income_median=median(income)), ]"                                                
-##  [5] "x[, age_mean:=mean(age), ]"                                                                                                                   
-##  [6] "x[, age_median:=median(age), ]"                                                                                                               
-##  [7] "x[, income_median:=median(income), ]"                                                                                                         
-##  [8] "x[order(gender, marital), age_mean:=mean(age), by = list(gender, marital)]"                                                                   
-##  [9] "x[order(gender, marital), age_median:=median(age), by = list(gender, marital)]"                                                               
-## [10] "x[order(gender, marital), income_median:=median(income), by = list(gender, marital)]"
+##  [3] "x <- data.table(x)"                                                                                                                           
+##  [4] "temp <- x[order(gender, marital), list(age_mean=mean(age), age_median=median(age), income_median=median(income)), by = list(gender, marital)]"
+##  [5] "temp <- x[, list(age_mean=mean(age), age_median=median(age), income_median=median(income)), ]"                                                
+##  [6] "x[, age_mean:=mean(age), ]"                                                                                                                   
+##  [7] "x[, age_median:=median(age), ]"                                                                                                               
+##  [8] "x[, income_median:=median(income), ]"                                                                                                         
+##  [9] "x[order(gender, marital), age_mean:=mean(age), by = list(gender, marital)]"                                                                   
+## [10] "x[order(gender, marital), age_median:=median(age), by = list(gender, marital)]"                                                               
+## [11] "x[order(gender, marital), income_median:=median(income), by = list(gender, marital)]"
 ```
 
 
@@ -88,7 +89,7 @@ Correlation to R Example
 -------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/correlationsExamp.txt")
+spss_to_r("inst/SPSSsyntax/correlationsExamp.txt")
 ```
 
 ```
@@ -101,7 +102,7 @@ Crosstab to R Example
 ----------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/crosstabExamp.txt")
+spss_to_r("inst/SPSSsyntax/crosstabExamp.txt")
 ```
 
 ```
@@ -124,7 +125,7 @@ Sort Cases to R Example
 -----------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/sortCasesExamp.txt")
+spss_to_r("inst/SPSSsyntax/sortCasesExamp.txt")
 ```
 
 ```
@@ -137,7 +138,7 @@ Descriptives to R Example
 -------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/descriptivesExamp.txt")
+spss_to_r("inst/SPSSsyntax/descriptivesExamp.txt")
 ```
 
 ```
@@ -150,7 +151,7 @@ One Sample T-test Example
 --------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestOneSampExamp.txt")
+spss_to_r("inst/SPSSsyntax/ttestOneSampExamp.txt")
 ```
 
 ```
@@ -163,7 +164,7 @@ Indpendent Sample T-test Example
 ----------------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/ttestTwoSampValExamp.txt")
+spss_to_r("inst/SPSSsyntax/ttestTwoSampValExamp.txt")
 ```
 
 ```
@@ -179,7 +180,7 @@ Get Command Example
 -------------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/getExamp.txt")
+spss_to_r("inst/SPSSsyntax/getExamp.txt")
 ```
 
 ```
@@ -193,7 +194,7 @@ Graphics
 ----------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/graphExamps.txt")
+spss_to_r("inst/SPSSsyntax/graphExamps.txt")
 ```
 
 ```
@@ -228,7 +229,7 @@ Frequencies
 ---------------
 
 ```r
-spss_to_r("C:/Users/e520062/Dropbox/SPSStoR/SPSSsyntax/frequenciesExamp.txt")
+spss_to_r("inst/SPSSsyntax/frequenciesExamp.txt")
 ```
 
 ```

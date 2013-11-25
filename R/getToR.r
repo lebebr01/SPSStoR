@@ -3,6 +3,7 @@
 #' Converts SPSS get syntax to R syntax
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @export
 get_to_r <- function(x){
   
   fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)

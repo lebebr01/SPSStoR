@@ -25,4 +25,5 @@ Collate:
     'ValueLabelsToR.r'
     'descmat.r'
     'getToR.r'
+    'getdataToR.r'
     'semean.r'

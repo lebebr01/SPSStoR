@@ -11,4 +11,7 @@
   Converts SPSS correlations routine syntax to R
   correlation syntax
 }
+\details{
+  Generates a correlation matrix for the variables.
+}
 

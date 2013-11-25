@@ -3,6 +3,7 @@
 #' Convert SPSS sort cases command to an R function.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @export
 sortcases_to_r <- function(x){
 
   loc <- grep("sort cases", x, ignore.case = TRUE)

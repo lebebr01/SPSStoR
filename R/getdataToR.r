@@ -4,6 +4,7 @@
 #' for delimited data.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @export
 getdata_to_r <- function(x) {
   
   fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)
@@ -32,7 +33,7 @@ getdata_to_r <- function(x) {
   delim <- substr(x[delimLoc], (which(strsplit(x[delimLoc], '')[[1]]=='=')+1), nchar(x[delimLoc]))
   
   finMat <- matrix(ncol = 1, nrow = 2)
-  finMat[1] <- paste("x <- read.table(", path, ", sep = '", delim, "', " header, ")", sep = '')
+  finMat[1] <- paste("x <- read.table(", path, ", sep = '", delim, "', ", header, ")", sep = '')
   
   finMat  
 }
