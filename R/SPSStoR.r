@@ -60,7 +60,7 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
   
   funcChunks <- paste(funcLoc, endFuncLoc, sep = ":")
   
-  xChunks <- sapply(1:length(funcChunks), function(m) 
+  xChunks <- lapply(1:length(funcChunks), function(m) 
     eval(parse(text = paste("x[", funcChunks[m], "]"))))
   
   if(is.list(xChunks) == FALSE){

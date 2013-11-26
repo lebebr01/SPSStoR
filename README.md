@@ -32,6 +32,7 @@ Upcoming Features
     + generalized models
 * if else statements
 * Examine
+* Bring over comments
 
 Installing Function
 ===================
@@ -129,8 +130,9 @@ spss_to_r("inst/SPSSsyntax/sortCasesExamp.txt")
 ```
 
 ```
-## Error: 'as.character(list("sortcases_to_r", "sortcases_to_r"))' is not a
-## function, character or symbol
+## [1] "# x is the name of your data frame"    
+## [2] "x <- x[order(DIVISION, STORE, -AGE), ]"
+## [3] "x <- x[order(DIVISION, -STORE), ]"
 ```
 
 
@@ -142,8 +144,11 @@ spss_to_r("inst/SPSSsyntax/descriptivesExamp.txt")
 ```
 
 ```
-## Error: 'as.character(list("descriptives_to_r", "descriptives_to_r"))' is
-## not a function, character or symbol
+## [1] "# x is the name of your data frame"                                                                                                       
+## [2] "library(SPSStoR)"                                                                                                                         
+## [3] "with(x, descmat(x = list(longmon, tollmon, equipmon, cardmon, wiremon), mean, sd, min, max))"                                             
+## [4] "library(e1071)"                                                                                                                           
+## [5] "with(x, descmat(x = list(longmon, tollmon, equipmon, cardmon, wiremon), mean, semean, sd, var, kurtosis, skewness, range, min, max, sum))"
 ```
 
 
