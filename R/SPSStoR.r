@@ -79,6 +79,7 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
     write.table(rsyntax, file = paste(filePath, '/rScript.r', sep = ''), row.names = FALSE, quote = FALSE,
                 col.names = FALSE)
   } else {
+    class(rsyntax) <- "rsyntax"
     rsyntax
   }
 }

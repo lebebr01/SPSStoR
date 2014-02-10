@@ -1,3 +1,4 @@
+S3method(print,rsyntax)
 export(aggregate_to_r)
 export(correlations_to_r)
 export(crosstabs_to_r)
