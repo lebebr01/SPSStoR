@@ -12,18 +12,3 @@ Depends:
     methods,
     stringr
 LazyData: true
-Collate:
-    'AggregateToR.r'
-    'CorrelationsToR.r'
-    'CrosstabToR.r'
-    'DescriptivesToR.r'
-    'FrequenciesToR.r'
-    'GraphToR.r'
-    'SPSStoR.r'
-    'SortCasesToR.r'
-    'TTestToR.r'
-    'ValueLabelsToR.r'
-    'descmat.r'
-    'getToR.r'
-    'getdataToR.r'
-    'semean.r'
