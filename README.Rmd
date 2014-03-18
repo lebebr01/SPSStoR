@@ -46,7 +46,11 @@ Examples
 Multiple commands
 ------------------
 ```{r multiple}
- spss_to_r("inst/SPSSsyntax/getDescExamp.txt")
+# User won't be able to run this
+spss_to_r("inst/SPSSsyntax/getDescExamp.txt")
+# But this will work
+spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
+
 ```
 
 
