@@ -6,17 +6,22 @@ to do the same analysis or data management tasks.
 
 ## Current Features
 ===============
-* Aggregate
-* Correlations
-* Crosstab
-* Sort Cases
+* Read in Data
+    * Get for sav files
+* Data Manipulation
+    * Sort Cases
 * Descriptives
-* One sample t-test
-* Independent sample t-test
-* Get for sav files
-* Master SPSStoR function
-* Graphics
-* Frequencies
+    * Aggregate
+    * Correlations
+    * Crosstab
+    * Descriptives
+    * Frequencies
+    * Graphics    
+* Models
+    * One sample t-test
+    * Independent sample t-test
+
+
 
 
 ## Upcoming Features
