@@ -1,10 +1,10 @@
-SPSS to R
+## SPSS to R
 =================
   
 A set of functions that takes *SPSS* syntax as input and outputs *R* commands 
 to do the same analysis or data management tasks.
 
-Current Features
+## Current Features
 ===============
 * Aggregate
 * Correlations
@@ -19,7 +19,7 @@ Current Features
 * Frequencies
 
 
-Upcoming Features
+## Upcoming Features
 =================
 * More Get commands to read in csv, txt, etc.
 * Dataset commands
@@ -33,7 +33,7 @@ Upcoming Features
 * if else statements
 * Examine
 
-Installing Function
+## Installing Function
 ===================
 ```{r install, eval = FALSE}
 library(devtools)
@@ -41,78 +41,73 @@ install_github("SPSStoR", username = "lebebr01")
 library(SPSStoR)
 ```
 
-Examples
+## Examples
 =========
-Multiple commands
+### Multiple commands
 ------------------
 ```{r multiple}
-# User won't be able to run this
-spss_to_r("inst/SPSSsyntax/getDescExamp.txt")
-# But this will work
+# Multiple commands in one
 spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 
 ```
 
 
-Aggregate to R Example
+### Aggregate Example
 -----------------------
 ```{r agg, warning = FALSE, message = FALSE}
-  spss_to_r("inst/SPSSsyntax/aggregateExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "aggregateExamp.txt", package = "SPSStoR"))
 ```
 
-Correlation to R Example
+### Correlation Example
 -------------------------
 ```{r corr, warning = FALSE, message = FALSE}
-  spss_to_r("inst/SPSSsyntax/correlationsExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "correlationsExamp.txt", package = "SPSStoR"))
 ```
 
-Crosstab to R Example
+### Crosstab Example
 ----------------------
 ```{r crosstab, warning = FALSE, message = FALSE}
-  spss_to_r("inst/SPSSsyntax/crosstabExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "crosstabExamp.txt", package = "SPSStoR"))
 ```
 
-Sort Cases to R Example
+### Sort Cases Example
 -----------------------
 ```{r sortcase, warning = FALSE, message = FALSE}
-  spss_to_r("inst/SPSSsyntax/sortCasesExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "sortCasesExamp.txt", package = "SPSStoR"))
 ```
 
-Descriptives to R Example
+### Descriptives Example
 -------------------------
 ```{r desc, warning = FALSE, message = FALSE}
-  spss_to_r("inst/SPSSsyntax/descriptivesExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "descriptivesExamp.txt", package = "SPSStoR"))
 ```
 
-One Sample T-test Example
+### t-test Examples
 --------------------------
-```{r ttestOS}
-  spss_to_r("inst/SPSSsyntax/ttestOneSampExamp.txt")
+```{r ttest}
+# t-test one-sample
+  spss_to_r(system.file("SPSSsyntax", "ttestOneSampExamp.txt", package = "SPSStoR"))
+# Independent t-test example
+  spss_to_r(system.file("SPSSsyntax", "ttestTwoSampValExamp.txt", package = "SPSStoR"))
   
 ```
 
-Indpendent Sample T-test Example
-----------------------------
-```{r ttestIS}
-  spss_to_r("inst/SPSSsyntax/ttestTwoSampValExamp.txt")
-```
-
-Get Command Example
+### Get Command Example
 -------------------
 ```{r get}
-  spss_to_r("inst/SPSSsyntax/getExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "getExamp.txt", package = "SPSStoR"))
 ```
 
-Graphics
+### Graphics
 ----------------
 ```{r graphics}
-  spss_to_r("inst/SPSSsyntax/graphExamps.txt")
+  spss_to_r(system.file("SPSSsyntax", "graphExamps.txt", package = "SPSStoR"))
 ```
 
-Frequencies
+### Frequencies
 ---------------
 ```{r frequencies}
-  spss_to_r("inst/SPSSsyntax/frequenciesExamp.txt")
+  spss_to_r(system.file("SPSSsyntax", "frequenciesExamp.txt", package = "SPSStoR"))
 ```
 
 
