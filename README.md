@@ -20,6 +20,7 @@ to do the same analysis or data management tasks.
 * Models
     * One sample t-test
     * Independent sample t-test
+    * One-way ANOVA
 
 
 
@@ -32,7 +33,7 @@ to do the same analysis or data management tasks.
 * Further arguments for descriptives
 * Modeling functions
     + t-test (two sample with cut score and paired)
-    + analysis of variance
+    + analysis of variance - more complicated designs
     + regression
     + generalized models
 * if else statements
