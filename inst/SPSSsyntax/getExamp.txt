@@ -1,1 +1,14 @@
 GET FILE='/data/hubtemp.sav'.
+
+GET DATA /TYPE=TXT
+  /FILE = '/data/gophers.csv'
+  /FIRSTCASE = 2
+  /DELIMITERS = ','.
+
+GET DATA /TYPE=XLSX
+  /FILE = '/data/twins.xlsx'
+  /SHEET=name 'Roster'.
+
+GET DATA /TYPE = XLS
+  /FILE = 'data/twins.xls'
+  /SHEET=index 2.

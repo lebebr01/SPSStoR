@@ -40,6 +40,11 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
   spssfunc <- sapply(funcLoc, function(k) grep("^.+ |^.+", x[k], value = TRUE))
   spssfunc <- gsub("-", "", spssfunc)
   
+  if(any(grepl("get data", spssfunc, ignore.case = TRUE))){
+    loc <- grep("get data", spssfunc, ignore.case = TRUE)
+    spssfunc[loc] <- "getdata"
+  }
+  
   if(any(grepl("=|by|BY",spssfunc)) == TRUE){
     trbl <- grep("=|by|BY", spssfunc)
     #sapply(1:length(trbl), function(k) unlist(strsplit(spssfunc[k], " "))[1])

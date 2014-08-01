@@ -9,7 +9,7 @@ getdata_to_r(x)
 \item{x}{SPSS syntax - read in by SPSStoR function}
 }
 \description{
-Converst SPSS Get Data command to R syntax.  Currently only works
-for delimited data.
+Converst SPSS Get Data command to R syntax.  Available for delimited or
+excel data files.
 }
 
