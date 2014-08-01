@@ -8,6 +8,7 @@ to do the same analysis or data management tasks.
 ===============
 * Read in Data
     * Get for sav files
+    * Get for csv, txt, xls, xlsx files with get data.
 * Data Manipulation
     * Sort Cases
 * Descriptives
@@ -20,14 +21,13 @@ to do the same analysis or data management tasks.
 * Models
     * One sample t-test
     * Independent sample t-test
-    * One-way ANOVA
+    * One-way ANOVA - with oneway routine
 
 
 
 
 ## Upcoming Features
 =================
-* More Get commands to read in csv, txt, etc.
 * Dataset commands
 * Value Labels
 * Further arguments for descriptives
