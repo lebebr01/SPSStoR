@@ -1,13 +1,13 @@
 Package: SPSStoR
-Maintainer: Brandon LeBeau <lebea027@umn.edu>
-Author: Brandon LeBeau <lebea027@umn.edu>
+Maintainer: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
+Author: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
 Version: 0.1
-License: GPL-2
+License: MIT + file LICENSE
 Title: SPSS syntax to R syntax
 Description: This package turns SPSS syntax
     into comparable R syntax.
 Depends:
-    R (>= 2.15),
+    R (>= 3.1.0),
     stats,
     methods,
     stringr
