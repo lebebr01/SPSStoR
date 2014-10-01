@@ -1,5 +1,4 @@
 ## SPSS to R
-=================
 
 [![Build Status](https://travis-ci.org/lebebr01/SPSStoR.svg?branch=master)](https://travis-ci.org/lebebr01/SPSStoR)
   
@@ -7,7 +6,6 @@ A set of functions that takes *SPSS* syntax as input and outputs *R* commands
 to do the same analysis or data management tasks.
 
 ## Current Features
-===============
 * Read in Data
     * Get for sav files
     * Get for csv, txt, xls, xlsx files with get data.
@@ -29,7 +27,6 @@ to do the same analysis or data management tasks.
 
 
 ## Upcoming Features
-=================
 * Dataset commands
 * Value Labels
 * Further arguments for descriptives
@@ -42,7 +39,6 @@ to do the same analysis or data management tasks.
 * Examine
 
 ## Installing Function
-===================
 
 ```r
 library(devtools)
@@ -51,7 +47,6 @@ library(SPSStoR)
 ```
 
 ## Examples
-=========
 ### Multiple commands
 ------------------
 
@@ -71,7 +66,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 
 
 ### Aggregate Example
------------------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "aggregateExamp.txt", package = "SPSStoR"))
@@ -92,7 +86,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Correlation Example
--------------------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "correlationsExamp.txt", package = "SPSStoR"))
@@ -104,7 +97,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Crosstab Example
-----------------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "crosstabExamp.txt", package = "SPSStoR"))
@@ -126,7 +118,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Sort Cases Example
------------------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "sortCasesExamp.txt", package = "SPSStoR"))
@@ -139,7 +130,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Descriptives Example
--------------------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "descriptivesExamp.txt", package = "SPSStoR"))
@@ -154,7 +144,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### t-test Examples
---------------------------
 
 ```r
 # t-test one-sample
@@ -180,7 +169,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Get Command Example
--------------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "getExamp.txt", package = "SPSStoR"))
@@ -193,7 +181,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Graphics
-----------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "graphExamps.txt", package = "SPSStoR"))
@@ -227,7 +214,6 @@ spss_to_r(system.file("SPSSsyntax", "getDescExamp.txt", package = "SPSStoR"))
 ```
 
 ### Frequencies
----------------
 
 ```r
   spss_to_r(system.file("SPSSsyntax", "frequenciesExamp.txt", package = "SPSStoR"))
