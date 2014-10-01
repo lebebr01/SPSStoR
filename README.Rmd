@@ -1,5 +1,7 @@
 ## SPSS to R
 =================
+
+[![Build Status](https://travis-ci.org/lebebr01/SPSStoR.svg?branch=master)](https://travis-ci.org/lebebr01/SPSStoR)
   
 A set of functions that takes *SPSS* syntax as input and outputs *R* commands 
 to do the same analysis or data management tasks.
