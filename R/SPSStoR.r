@@ -47,18 +47,12 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
   
   if(any(grepl("=|by|BY",spssfunc)) == TRUE){
     trbl <- grep("=|by|BY", spssfunc)
-    #sapply(1:length(trbl), function(k) unlist(strsplit(spssfunc[k], " "))[1])
-    for(k in trbl){
-     spssfunc[k] <- unlist(strsplit(spssfunc[k], " "))[1]
-    }    
+    sapply(trbl, function(k) unlist(strsplit(spssfunc[k], " "))[1])
   }
   
   if(any(grepl(" ", spssfunc) == TRUE)){
     loc <- grep(' ', spssfunc)
-    for(l in loc){
-      spssfunc[l] <- paste(strsplit(spssfunc[l], ' ')[[1]][1:2], collapse = "")
-    }
-    
+    sapply(loc, function(l) paste(strsplit(spssfunc[l], ' ')[[1]][1:2], collapse = ""))
   }
   
   spssfunc <- gsub("sort$", "sortcases", spssfunc, ignore.case = TRUE)

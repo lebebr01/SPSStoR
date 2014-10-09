@@ -1,0 +1,6 @@
+COMPUTE V1=25-V2.
+COMPUTE V3=(V2/V4)*100.
+
+COMPUTE NewSalary = SUM(Salary,Raise).
+COMPUTE MinValue = MIN(V1,V2,V3,V4).
+COMPUTE MeanValue = MEAN(V1,V2,V3,V4).
