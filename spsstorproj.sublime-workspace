@@ -7,6 +7,30 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "R/ValueLabelsToR.r",
+			"settings":
+			{
+				"buffer_size": 250,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "inst/SPSSsyntax/valuelabelsExamp2.txt",
+			"settings":
+			{
+				"buffer_size": 1453,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "inst/SPSSsyntax/valuelabelsExamp.txt",
+			"settings":
+			{
+				"buffer_size": 91,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -33,6 +57,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/C/Users/bleb/Dropbox/SPSStoR",
+		"/C/Users/bleb/Dropbox/SPSStoR/inst",
+		"/C/Users/bleb/Dropbox/SPSStoR/inst/SPSSsyntax",
+		"/C/Users/bleb/Dropbox/SPSStoR/R"
+	],
 	"file_history":
 	[
 	],
@@ -69,8 +100,101 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "R/ValueLabelsToR.r",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 250,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": true,
+							"WordCountSyntax": "r extended",
+							"syntax": "Packages/R-Box/syntax/R Extended.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "inst/SPSSsyntax/valuelabelsExamp2.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1453,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								898,
+								898
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": true,
+							"WordCountSyntax": "plain text",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "inst/SPSSsyntax/valuelabelsExamp.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 91,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"WordCountShouldRun": true,
+							"WordCountSyntax": "plain text",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -139,6 +263,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 		"last_automatic_layout":

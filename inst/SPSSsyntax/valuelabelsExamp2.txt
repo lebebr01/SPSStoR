@@ -1,0 +1,44 @@
+value labels
+     TESTCODE
+       'ABS' 'Student Absent'
+       'INV' 'Invalid test (due to inappropriate behavior)'
+       'ME' 'Documented medical excuse'
+       'NA' 'Not attempted--student did not attempt at least 4 multiple choice questions in any single segment'
+       'NC' 'Not completed--student answered 4 multiple choice questions in any single segment'
+       'NE' 'Not enrolled at beginning of testing cycle'
+       'REF' 'Parent/Guardian refusal'
+       'VS' 'Valid score'
+       'WG' 'Wrong grade (student reported in wrong grade--should not have taken test--do not use document in measurements'
+      /ACHIEVEMENTLEVEL
+       'D' 'Does Not Meet the Standards'
+       'P' 'Partially Meets the Standards'
+       'M' 'Meets the Standards'
+       'E' 'Exceeds the Standards'
+      /GENDER
+       'M' 'Male'
+       'F' 'Female'
+      /ADM97
+       'L01' 'LEP enrolled less than 1.0 year'
+       'L12' 'LEP enrolled 1.0 - 2.9 years'
+       'L34' 'LEP enrolled 3.0 - 4.9 years'
+       'L5P' 'LEP enrolled 5.0 or more years'
+       'N01' 'Non-LEP enrolled less than 1.0 year'
+       'N12' 'Non-LEP enrolled 1.0 - 2.9 years'
+       'N34' 'Non-LEP enrolled 3.0 - 4.9 years'
+       'N5P' 'Non-LEP enrolled 5.0 or more years'
+       'UNK' 'Demographics are not currently available'
+      /ETHNICCODE
+      0 'Others'
+      1 'American Indian'
+      2 'Asian American' 
+      3 'Latino'
+      4 'African American'
+      5 'Caucasian'
+execute.
+
+
+
+
+
+
+

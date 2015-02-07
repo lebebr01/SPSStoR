@@ -68,3 +68,33 @@ oneway_to_r <- function(x){
   
  finMat  
 }
+
+#' Unianova to R
+#' 
+#' Converts SPSS unianova syntax to R syntax
+#' 
+#' @param x SPSS syntax - read in by SPSStoR function
+#' @export
+oneway_to_r <- function(x){
+  
+  x <- gsub("unianova\\s+", "", x, ignore.case = TRUE)
+  
+  vars <- unlist(strsplit(x[1], split = "by|BY|with|WITH"))
+  vars <- gsub("^\\s+|\\s+$", "", vars)
+  depvar <- vars[1]
+    if(length(vars) == 3) { cov <- vars[3] }
+  ivar <- vars[2]  
+  ivar <- unlist(strsplit(ivar, " "))
+    
+  modelLoc <- grep("design", x, ignore.case = TRUE)
+  indvars <- unlist(strsplit(strsplit(x[modelLoc], "=")[[1]][2], " "))
+  indvars <- gsub("\\.", "", indvars)
+  for(xx in 1:length(ivar)) {
+    indvars <- gsub(ivar[xx], paste("factor(", ivar[xx], ")", sep = ""), indvars)
+  }     
+  indvars <- paste(indvars, collapse = " + ")
+  indvars <- gsub("\\*", ":", indvars)
+  
+  vars <- c(depvar, indvars)  
+  vars <- paste(vars, collapse = " ~ ") 
+}
