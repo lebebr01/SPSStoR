@@ -75,26 +75,63 @@ oneway_to_r <- function(x){
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @export
-oneway_to_r <- function(x){
+unianova_to_r <- function(x){
   
-  x <- gsub("unianova\\s+", "", x, ignore.case = TRUE)
+  x <- gsub("unianova\\s*", "", x, ignore.case = TRUE)
+  if(nchar(x[1]) == 0) { x <- x[-1] }
   
   vars <- unlist(strsplit(x[1], split = "by|BY|with|WITH"))
   vars <- gsub("^\\s+|\\s+$", "", vars)
   depvar <- vars[1]
-    if(length(vars) == 3) { cov <- vars[3] }
+    if(length(vars) == 3) { cov <- vars[3] } else { cov <- ''}
   ivar <- vars[2]  
   ivar <- unlist(strsplit(ivar, " "))
     
   modelLoc <- grep("design", x, ignore.case = TRUE)
-  indvars <- unlist(strsplit(strsplit(x[modelLoc], "=")[[1]][2], " "))
-  indvars <- gsub("\\.", "", indvars)
-  for(xx in 1:length(ivar)) {
-    indvars <- gsub(ivar[xx], paste("factor(", ivar[xx], ")", sep = ""), indvars)
-  }     
-  indvars <- paste(indvars, collapse = " + ")
-  indvars <- gsub("\\*", ":", indvars)
-  
+  if(length(grep("=", x[modelLoc])) == 0){
+    indvars <- vector("character", length(ivar))
+    for(xx in 1:length(ivar)) {
+      indvars[xx] <- paste("factor(", ivar[xx], ")", sep = "")
+    } 
+    indvars <- subset(indvars, nchar(indvars) > 0)
+    indvars <- paste(indvars, collapse = "*")
+    indvars <- c(cov, indvars)
+    indvars <- paste(indvars, collapse = " + ")
+  } else {
+    indvars <- unlist(strsplit(strsplit(x[modelLoc], "=")[[1]][2], " "))
+    indvars <- gsub("\\.", "", indvars)
+    for(xx in 1:length(ivar)) {
+      indvars <- gsub(ivar[xx], paste("factor(", ivar[xx], ")", sep = ""), indvars)
+    }     
+    indvars <- subset(indvars, nchar(indvars) > 0)
+    indvars <- paste(indvars, collapse = " + ")
+    #indvars <- c(cov, indvars)
+    #indvars <- paste(indvars, collapse = " + ")
+    indvars <- gsub("\\*", ":", indvars)
+  }
+    
   vars <- c(depvar, indvars)  
   vars <- paste(vars, collapse = " ~ ") 
+
+  sstype <- grep("method", x, ignore.case = TRUE)
+  if(length(sstype) == 0) {
+    ss <- matrix(c('library(car)', 
+      paste0('Anova(mod_1, type = 3)')))
+  } else {
+    tmp <- regexec('^.*?\\([^\\d]*(\\d+)[^\\d]*\\).*$', x, ignore.case = TRUE)
+    sst <- as.numeric(unlist(regmatches(x, tmp))[2])
+    if(sst %in% c(2, 3)) {
+      ss <- matrix(c('library(car)', 
+      paste0('Anova(mod_1, type = ', sst, ')')))
+    } else {
+      ss <- matrix(c('anova(mod_1)'))
+    }
+  }
+
+  finMat <- matrix(nrow = 2, ncol = 1)
+  finMat[1] <- '# Note: A * is a factorial expansion, and : represents an interaction'
+  finMat[2] <- paste0('mod_1 <- lm(', vars, ', data = x)')
+  finMat <- rbind(finMat, ss)
+    
+  finMat
 }
