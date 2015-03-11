@@ -131,7 +131,7 @@ unianova_to_r <- function(x){
   finMat <- matrix(nrow = 2, ncol = 1)
   finMat[1] <- '# Note: A * is a factorial expansion, and : represents an interaction'
   finMat[2] <- paste0('mod_1 <- lm(', vars, ', data = x)')
-  finMat <- rbind(finMat, ss)
+  finMat <- c(finMat, ss)
     
   finMat
 }
