@@ -6,8 +6,10 @@
 #' the analysis done in SPSS.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @param dplyr A value of TRUE uses dplyr syntax (default), 
+#'              a value of FALSE uses data.table syntax
 #' @export
-compute_to_r <- function(x) {
+compute_to_r <- function(x, dplyr = TRUE) {
   
   x <- gsub('compute', '', x, ignore.case = TRUE)
   x <- gsub("^\\s+|\\s+$", "", x)

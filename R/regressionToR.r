@@ -3,8 +3,10 @@
 #' Converts SPSS regression syntax to R syntax
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @param dplyr A value of TRUE uses dplyr syntax (default), 
+#'              a value of FALSE uses data.table syntax
 #' @export
-regression_to_r <- function(x){
+regression_to_r <- function(x, dplyr = TRUE){
   
   x <- gsub("regression\\s*", "", x, ignore.case = TRUE)
   if(nchar(x[1]) == 0) { x <- x[-1] }

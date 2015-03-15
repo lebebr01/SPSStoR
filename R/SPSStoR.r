@@ -13,6 +13,8 @@
 #' printed when saving this script file.
 #'
 #' @param file Path of text file that has SPSS syntax
+#' @param dplyr A value of TRUE uses dplyr syntax (default), 
+#'              a value of FALSE uses data.table syntax
 #' @param writeRscript TRUE or FALSE variable to write R script.
 #'   By default this is FALSE.
 #' @param filePath Path to save R script. 
@@ -22,7 +24,7 @@
 #' \donttest{
 #' 
 #' }
-spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
+spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL){
   
   x <- readLines(file)
   x <- gsub("^\\s+|\\s+$", "", x)
@@ -47,12 +49,14 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
   
   if(any(grepl("=|by|BY",spssfunc)) == TRUE){
     trbl <- grep("=|by|BY", spssfunc)
-    sapply(trbl, function(k) unlist(strsplit(spssfunc[k], " "))[1])
+    spssfunc[trbl] <- sapply(trbl, function(k) 
+      unlist(strsplit(spssfunc[k], " "))[1])
   }
   
   if(any(grepl(" ", spssfunc) == TRUE)){
     loc <- grep(' ', spssfunc)
-    sapply(loc, function(l) paste(strsplit(spssfunc[l], ' ')[[1]][1:2], collapse = ""))
+    spssfunc <- sapply(loc, function(l) 
+      paste(strsplit(spssfunc[l], ' ')[[1]][1:2], collapse = ""))
   }
   
   spssfunc <- gsub("sort$", "sortcases", spssfunc, ignore.case = TRUE)
@@ -66,10 +70,10 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
   
   if(is.list(xChunks) == FALSE){
     FUN <- match.fun(as.character(spssToR))
-    rsyntax <- FUN(xChunks)
+    rsyntax <- FUN(xChunks, dp)
   } else {
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
-      do.call(spssToR[[x]], xChunks[x])))
+      do.call(spssToR[[x]], xChunks[x], dplyr)))
   }  
   
   rsyntax <- c("# x is the name of your data frame", rsyntax)
@@ -77,7 +81,7 @@ spss_to_r <- function(file, writeRscript = FALSE, filePath = NULL){
   
   if(writeRscript == TRUE){
     if(is.null(filePath) == TRUE){ filePath <- getwd()}
-    write.table(rsyntax, file = paste(filePath, '/rScript.r', sep = ''), row.names = FALSE, quote = FALSE,
+    write.table(rsyntax, file = paste0(filePath, '/rScript.r'), row.names = FALSE, quote = FALSE,
                 col.names = FALSE)
   } else {
     class(rsyntax) <- "rsyntax"

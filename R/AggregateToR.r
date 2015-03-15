@@ -8,8 +8,10 @@
 #' variables back into the original R data frame.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @param dplyr A value of TRUE uses dplyr syntax (default), 
+#'              a value of FALSE uses data.table syntax
 #' @export
-aggregate_to_r <- function(x){
+aggregate_to_r <- function(x, dplyr = TRUE){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){
     aggVarsOrd <- NULL 
@@ -18,8 +20,12 @@ aggregate_to_r <- function(x){
     varsLoc <- grep("\\/break\\s?=", x, ignore.case = TRUE)
     vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))
     aggVars <- paste(unlist(strsplit(gsub("^\\s+|\\s+$", "", vars), " ")), collapse = ", ")
-    aggVarsOrd <- paste("order(", aggVars, ")", sep = "")
-    aggVarsBy <- paste("by = list(", aggVars, ")", sep = "")
+    if(dplyr) {
+      aggVarsBy <- paste0('group_by(', aggVars, ')')
+    } else {
+      aggVarsOrd <- paste("order(", aggVars, ")", sep = "")
+      aggVarsBy <- paste("by = list(", aggVars, ")", sep = "")
+    }
   }  
   
   if(length(grep("\\/outfile\\s?=", x, ignore.case = TRUE)) < 1 | 
@@ -41,20 +47,37 @@ aggregate_to_r <- function(x){
   for(i in 1:length(calcLoc)){
     funct[i] <- tolower(gsub("/", "", x[calcLoc[i]]))
   }
-  if(length(object) < 1) {
-    funct <- gsub("=", ":=", funct)
+  if(is.null(object)) {
     funct <- gsub("\\.", "", funct)
+    if(dplyr) {
+      funct <- paste(funct, collapse = ", ")
+      funct <- paste0('mutate(', funct, ')')
+    } else {
+      funct <- gsub("=", ":=", funct)
+    }
   } else {
     funct <- gsub("\\.", "", paste(funct, collapse = ", "))
-    funct <- paste("list(", funct, ")", sep = "")
+    if(dplyr) {
+      funct <- paste0('summarize(', funct, ')')
+    } else {
+      funct <- paste0("list(", funct, ")")
+    }
   }  
   
+  if(dplyr){
+    values <- c('x', aggVarsBy, funct)
+    finMat <- matrix(nrow = length(funct) + 1, ncol = 1)
+    finMat[1] <- 'library(dplyr)'
+    finMat[2] <- paste(values, collapse = ' %>% ')
+  } else {
     finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
     finMat[1] <- 'library(data.table)'
     finMat[2] <- 'x <- data.table(x)'
     for(i in 1:length(funct)){
       finMat[i+2] <- paste(object, "x[", aggVarsOrd, ", ", funct[i], ", ", aggVarsBy, "]", sep = "")
     }
+  }
+   
 
  finMat
 }

@@ -3,8 +3,10 @@
 #' Converts SPSS get syntax to R syntax
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @param dplyr A value of TRUE uses dplyr syntax (default), 
+#'              a value of FALSE uses data.table syntax
 #' @export
-get_to_r <- function(x){
+get_to_r <- function(x, dplyr = TRUE){
   
   fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)
   if(any(grepl('\"', x)) == TRUE){
