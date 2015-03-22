@@ -61,6 +61,7 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   
   spssfunc <- gsub("sort$", "sortcases", spssfunc, ignore.case = TRUE)
   spssfunc <- gsub("missing$", "missingvalues", spssfunc, ignore.case = TRUE)
+  spssfunc <- gsub("value$", "valuelabels", spssfunc, ignore.case = TRUE)
   
   spssToR <- as.list(paste(tolower(spssfunc), "_to_r", sep = ""))
   
