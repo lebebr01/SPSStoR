@@ -2,7 +2,7 @@
 % Please edit documentation in R/ValueLabelsToR.r
 \name{valuelabels_to_r}
 \alias{valuelabels_to_r}
-\title{Value labels to R}
+\title{Value Labels to R}
 \usage{
 valuelabels_to_r(x, dplyr = TRUE)
 }

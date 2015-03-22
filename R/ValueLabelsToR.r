@@ -1,4 +1,4 @@
-#' Value labels to R
+#' Value Labels to R
 #' 
 #' Converts SPSS value label syntax to R code#' 
 #' 
@@ -8,9 +8,7 @@
 #' @export
 valuelabels_to_r <- function(x, dplyr = TRUE){
   
-  #require(data.table)
-  #if(syntax == "plyr") require(plyr)
-
+  
  
   
 }  
