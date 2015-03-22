@@ -13,6 +13,8 @@ valuelabels_to_r(x, dplyr = TRUE)
 a value of FALSE uses data.table syntax}
 }
 \description{
-Converts SPSS value label syntax to R code#'
+Converts SPSS value label syntax to R code. Currently only
+  supports adding labels to continuous variables and one
+  variable per value labels command.
 }
 
