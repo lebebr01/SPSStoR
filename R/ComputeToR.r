@@ -33,3 +33,65 @@ compute_to_r <- function(x, dplyr = TRUE) {
   
   finMat  
 }
+
+#' If to R
+#' 
+#' Converts SPSS if statements to R if statements.
+#' 
+#' This function returns R syntax that mimics what is accomplished
+#'   with the same analysis in SPSS.
+#'   
+#' @param x SPSS syntax - read in by SPSStoR function
+#' @param dplyr A value of TRUE uses dplyr syntax (default), 
+#'              a value of FALSE uses data.table syntax
+#' @importFrom stringr str_extract
+#' @export
+if_to_r <- function(x, dplyr = TRUE) {
+  
+  x <- gsub("if\\s*", "", x, ignore.case = TRUE)
+  x <- gsub("\\.$", "", x)
+  
+  vars <- str_extract(x, "\\).+")
+  vars <- gsub("^\\)\\s*", "", vars)
+  uniq_vars <- gsub("\\s*", "", 
+                    unique(gsub("=", "", str_extract(vars, ".+="))))
+  n_uniq_vars <- length(uniq_vars)
+  uniq_vars_loc <- lapply(1:n_uniq_vars, function(xx) 
+    grep(uniq_vars[xx], vars))
+  values <- gsub("=\\s*", "", str_extract(vars, "=.+"))
+  
+  conditions <- str_extract(x, ".+\\)")
+  conditions <- gsub("and", "&", conditions, ignore.case = TRUE)
+  conditions <- gsub("or", "|", conditions, ignore.case = TRUE)
+  conditions <- gsub("ne|~=|<>", "!=", conditions, ignore.case = TRUE)
+  conditions <- gsub("eq|=", "==", conditions, ignore.case = TRUE)
+  conditions <- gsub("lt", "<", conditions, ignore.case = TRUE)
+  conditions <- gsub("gt", ">", conditions, ignore.case = TRUE)
+  conditions <- gsub("le|<=+", "<=", conditions, ignore.case = TRUE)
+  conditions <- gsub("ge|>=+", ">=", conditions, ignore.case = TRUE)
+  
+  tmp <- vector("list", length(uniq_vars_loc))
+  for(i in 1:length(uniq_vars_loc)) {
+     if(length(uniq_vars_loc[[i]]) - 1 == 1) {
+        tmp[[i]] <- paste0('ifelse(', conditions[1], ', ',  values[1], ', ', 
+               values[2], ')')
+      } else {
+        tmp[[i]] <- vector('character', (length(uniq_vars_loc[[i]]) - 1))
+       for(k in 1:(length(uniq_vars_loc[[i]]) - 1)) {
+         if(k == (length(uniq_vars_loc[[i]]) - 1)) {
+           tmp[[i]][k] <- paste0('ifelse(', conditions[k], ', ',  values[k], ', ', 
+                  values[k + 1], 
+                  paste(rep(')', (length(uniq_vars_loc[[i]]) - 1)), collapse = ""))
+         } else {
+           tmp[[i]][k] <- paste0('ifelse(', conditions[k], ', ', 
+                                 values[k], ', ')
+         }
+       }
+      }
+  }
+  cond <- do.call("paste", c(tmp, collapse = ""))
+  
+  finmat <- sapply(1:length(uniq_vars), function(xx) 
+    paste0('x$', uniq_vars[xx], ' <- ', cond[xx]))
+  finmat
+}
