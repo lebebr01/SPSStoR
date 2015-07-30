@@ -31,6 +31,8 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   
   x <- subset(x, grepl(".+", x) == TRUE)
   
+  x <- subset(x, grepl("^\\*", x) == FALSE)
+  
   endFuncLoc <- grep("\\.$", x)
   n <- length(endFuncLoc)
   
@@ -55,7 +57,7 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   
   if(any(grepl(" ", spssfunc) == TRUE)){
     loc <- grep(' ', spssfunc)
-    spssfunc <- sapply(loc, function(l) 
+    spssfunc[loc] <- sapply(loc, function(l) 
       paste(strsplit(spssfunc[l], ' ')[[1]][1:2], collapse = ""))
   }
   

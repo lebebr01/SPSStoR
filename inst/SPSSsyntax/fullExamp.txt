@@ -1,0 +1,249 @@
+* Read in pre-merged file (done with R).
+GET DATA  /TYPE=TXT
+  /FILE="\\Client\C$\Users\bleb\OneDrive - University of Iowa 1\Courses\Uiowa\Comp\Data\moviesJoin.csv"
+  /ENCODING='Locale'
+  /DELCASE=LINE
+  /DELIMITERS=","
+  /QUALIFIER='"'
+  /ARRANGEMENT=DELIMITED
+  /FIRSTCASE=2
+  /IMPORTCASE=ALL
+  /VARIABLES=
+  title A66
+  year F4.0
+  length F3.0
+  budget F7.5
+  rating F3.1
+  votes F5.0
+  r1 F4.1
+  r2 F4.1
+  r3 F4.1
+  r4 F4.1
+  r5 F4.1
+  r6 F4.1
+  r7 F4.1
+  r8 F4.1
+  r9 F4.1
+  r10 F4.1
+  mpaa A5
+  Action F1.0
+  Animation F1.0
+  Comedy F1.0
+  Drama F1.0
+  Documentary F1.0
+  Romance F1.0
+  Short F1.0
+  TicketPrice F4.2
+  Uspopulation F3.0
+  NumReleases F3.0
+  NumScreens F5.0
+  BoxOffice F4.0
+  PerCapita F5.2.
+CACHE.
+EXECUTE.
+DATASET NAME MoviesJoin WINDOW=FRONT.
+
+* Assign missing values to merged data.
+missing values TicketPrice USpopulation NumReleases NumScreens BoxOffice PerCapita (-9).
+missing values budget (-99999).
+
+* Question 1.
+* Create new variable.
+if (TicketPrice <= 1.00) group = 1.
+if (TicketPrice > 1 AND TicketPrice < 3) group = 2.
+if (TicketPrice >= 3) group = 3.
+execute.
+
+value labels group 1 '$1 or less'
+                              2 'Between $1 and $3'
+                              3 '$3 or more'.
+
+* Exploring the variables descriptively.
+EXAMINE VARIABLES=rating budget length BY group
+  /PLOT BOXPLOT HISTOGRAM
+  /COMPARE GROUPS
+  /STATISTICS DESCRIPTIVES
+  /CINTERVAL 95
+  /MISSING LISTWISE
+  /TOTAL.
+
+* Question 2 - 3.
+* To do the post hoc analysis, I set the alpha to .01, can justify other values too.
+* Rating.
+UNIANOVA rating BY group
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /POSTHOC=group(BONFERRONI) 
+  /PLOT=PROFILE(group)
+  /EMMEANS=TABLES(OVERALL) 
+  /EMMEANS=TABLES(group) 
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.01)
+  /DESIGN=group.
+
+* Budget.
+UNIANOVA budget BY group
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /POSTHOC=group(BONFERRONI) 
+  /PLOT=PROFILE(group)
+  /EMMEANS=TABLES(OVERALL) 
+  /EMMEANS=TABLES(group) 
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.01)
+  /DESIGN=group.
+
+*Length.
+UNIANOVA length BY group
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /POSTHOC=group(BONFERRONI) 
+  /PLOT=PROFILE(group)
+  /EMMEANS=TABLES(OVERALL) 
+  /EMMEANS=TABLES(group) 
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.01)
+  /DESIGN=group.
+
+
+* Question 4.
+* QQ-Plots - could also look at histograms.
+EXAMINE VARIABLES=rating
+  /PLOT NPPLOT
+  /STATISTICS NONE
+  /CINTERVAL 95
+  /MISSING LISTWISE
+  /NOTOTAL.
+
+EXAMINE VARIABLES=budget 
+  /PLOT NPPLOT
+  /STATISTICS NONE
+  /CINTERVAL 95
+  /MISSING LISTWISE
+  /NOTOTAL.
+
+EXAMINE VARIABLES=length
+  /PLOT NPPLOT
+  /STATISTICS NONE
+  /CINTERVAL 95
+  /MISSING LISTWISE
+  /NOTOTAL.
+
+* This is looking for similar variance of the two groups.
+* Could also look at levene's test from anova output.
+MEANS TABLES=rating budget length BY group
+  /CELLS MEAN COUNT STDDEV var.
+
+* Question 5 - Effect size can be calculated from anova output - SSexplained/SStotal.
+
+* Question 6.
+* Rating.
+UNIANOVA rating BY group comedy
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /PLOT=PROFILE(group*comedy)
+  /EMMEANS=TABLES(OVERALL)
+  /EMMEANS=TABLES(group)
+  /EMMEANS=TABLES(comedy)
+  /EMMEANS=TABLES(group*comedy)
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=group comedy group*comedy.
+
+* Budget.
+UNIANOVA budget BY group comedy
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /PLOT=PROFILE(group*comedy)
+  /EMMEANS=TABLES(OVERALL)
+  /EMMEANS=TABLES(group)
+  /EMMEANS=TABLES(comedy)
+  /EMMEANS=TABLES(group*comedy)
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=group comedy group*comedy.
+
+* Length.
+UNIANOVA length BY group comedy
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /PLOT=PROFILE(group*comedy)
+  /EMMEANS=TABLES(OVERALL)
+  /EMMEANS=TABLES(group)
+  /EMMEANS=TABLES(comedy)
+  /EMMEANS=TABLES(group*comedy)
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=group comedy group*comedy.
+
+* Question 7.
+DATASET ACTIVATE MoviesJoin.
+DATASET DECLARE MoviesAgg.
+SORT CASES BY group Comedy.
+AGGREGATE
+  /OUTFILE='MoviesAgg'
+  /PRESORTED
+  /BREAK=group Comedy
+  /length_mean=MEAN(length) 
+  /budget_mean=MEAN(budget) 
+  /rating_mean=MEAN(rating).
+
+value labels Comedy 0 'Not a Comedy'
+                                  1 'Comedy'.
+
+DATASET ACTIVATE MoviesAgg.
+* Create line graph for average length of movie - repeat for other variables depending on 
+* significance of analysis of variance.
+GGRAPH
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=group MEAN(length_mean)[name="MEAN_length_mean"] 
+    Comedy MISSING=LISTWISE REPORTMISSING=NO
+  /GRAPHSPEC SOURCE=INLINE.
+BEGIN GPL
+  SOURCE: s=userSource(id("graphdataset"))
+  DATA: group=col(source(s), name("group"), unit.category())
+  DATA: MEAN_length_mean=col(source(s), name("MEAN_length_mean"))
+  DATA: Comedy=col(source(s), name("Comedy"), unit.category())
+  GUIDE: axis(dim(1), label("group"))
+  GUIDE: axis(dim(2), label("Mean length_mean"))
+  GUIDE: legend(aesthetic(aesthetic.color.interior), label("Comedy"))
+  SCALE: cat(dim(1), include("1.00", "2.00", "3.00"))
+  SCALE: linear(dim(2), include(0))
+  SCALE: cat(aesthetic(aesthetic.color.interior), include("0", "1"))
+  ELEMENT: line(position(group*MEAN_length_mean), color.interior(Comedy), missing.wings())
+END GPL.
+
+
+* Question 8 - contrast with lmatrix.
+DATASET ACTIVATE MoviesJoin.
+UNIANOVA rating BY group comedy
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /SAVE=PRED RESID ZRESID
+  /PLOT=PROFILE(group*comedy)
+  /EMMEANS=TABLES(OVERALL)
+  /EMMEANS=TABLES(group)
+  /EMMEANS=TABLES(comedy)
+  /EMMEANS=TABLES(group*comedy)
+  /LMATRIX = '$3 vs $1-3'
+                    group 0 1 -1
+                    group*comedy 0 0 0 1 0 -1
+  /PRINT=OPOWER HOMOGENEITY DESCRIPTIVE
+  /PLOT=RESIDUALS
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=group comedy group*comedy.
+
+
+
+
