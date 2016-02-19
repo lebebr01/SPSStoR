@@ -21,7 +21,27 @@ compute_to_r <- function(x, dplyr = TRUE) {
   if(grepl('\\(', expr)) {
     func <- tolower(unlist(strsplit(expr, '\\('))[1])
     vars <- unlist(strsplit(expr, '\\('))[2]
+    if(grepl(' to ', vars, ignore.case = TRUE)) {
+      if(grepl(',', vars, ignore.case = TRUE)) {
+        vars <- unlist(strsplit(vars, split = ','))
+        vars <- gsub("^\\s+|\\s+$", "", vars)
+        vars <- gsub(")", '', vars)
+      }
+      vars <- strsplit(vars, split = ' to ')
+      digits <- lapply(seq_along(vars), function(xx) 
+        gsub('[a-zA-Z][[:punct:]]*', '', vars[[xx]]))
+      alpha <- lapply(seq_along(vars), function(xx)
+        gsub('[0-9]', '', vars[[xx]])[1])
+      num_digits <- lapply(seq_along(digits), function(xx) 
+        paste0('%0', nchar(digits[[xx]][1]), 'd'))
+      sequence <- lapply(seq_along(digits), function(xx)
+        sprintf(num_digits[[xx]], digits[[xx]][1]:digits[[xx]][2]))
+      vars <- unlist(lapply(seq_along(alpha), function(xx)
+        paste0(alpha[[xx]], sequence[[xx]])))
+      vars <- paste(vars, collapse = ",")
+    }
     expr <- paste(func, vars, sep = '(')
+    expr <- paste(expr, ')', sep = '')
   }
   
   if(grepl('min|max|mean|sum', expr, ignore.case = TRUE)) {
