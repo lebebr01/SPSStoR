@@ -17,8 +17,8 @@ get_to_r <- function(x, dplyr = TRUE){
                    (which(strsplit(x[fileLoc], '')[[1]]=='\'')[2]))
   }
   
-  rx <- paste0("x <- read.spss(", path, ", to.data.frame = TRUE)")
-  finMat <- paste("library(foreign)", rx, sep = "\n")
+  rx <- paste0("x <- read_sav(", path, ")")
+  finMat <- paste("library(haven)", rx, sep = "\n")
 finMat
 }
 

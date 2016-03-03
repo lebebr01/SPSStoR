@@ -28,6 +28,7 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   
   x <- readLines(file)
   x <- gsub("^\\s+|\\s+$", "", x)
+  x <- gsub("\t", " ", x)
   
   x <- subset(x, grepl(".+", x) == TRUE)
   
@@ -47,6 +48,22 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   if(any(grepl("get data", spssfunc, ignore.case = TRUE))){
     loc <- grep("get data", spssfunc, ignore.case = TRUE)
     spssfunc[loc] <- "getdata"
+  }
+  if(any(grepl("file handle", spssfunc, ignore.case = TRUE))){
+    loc <- grep("file handle", spssfunc, ignore.case = TRUE)
+    spssfunc[loc] <- 'filehandle'
+  }
+  if(any(grepl('do repeat', spssfunc, ignore.case = TRUE))){
+    loc <- grep('do repeat', spssfunc, ignore.case = TRUE)
+    spssfunc[loc] <- 'dorepeat'
+    loc_end <- grep('end repeat', spssfunc, ignore.case = TRUE)
+    remove_loc <- paste0('c(', paste(paste0(loc + 1, ':', loc_end), collapse = ','),
+                         ')')
+    spssfunc <- spssfunc[-eval(parse(text = remove_loc))]
+    funcLoc <- funcLoc[-eval(parse(text = remove_loc))]
+    remove_loc <- paste0('c(', paste(paste0(loc, ':', loc_end - 1), collapse = ','),
+                         ')')
+    endFuncLoc <- endFuncLoc[-eval(parse(text = remove_loc))]
   }
   
   if(any(grepl("=|by|BY",spssfunc)) == TRUE){
