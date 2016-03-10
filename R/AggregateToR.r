@@ -28,16 +28,17 @@ aggregate_to_r <- function(x, dplyr = TRUE){
     }
   }  
   
-  if(length(grep("\\/outfile\\s?=", x, ignore.case = TRUE)) < 1 | 
+  if(length(grep("\\/?outfile\\s?=", x, ignore.case = TRUE)) < 1 | 
        length(grep("addvariables", x, ignore.case = TRUE)) == 1){
     object <- NULL
   } else {
-    objectLoc <- grep("\\/outfile\\s?=", x, ignore.case = TRUE)
+    objectLoc <- grep("\\/?outfile\\s?=", x, ignore.case = TRUE)
     object <- unlist(strsplit(substr(x[objectLoc], (which(strsplit(x[objectLoc], '')[[1]]=='=')+1), 
                                      nchar(x[objectLoc])), "/"))
-    object <- gsub(".sav", "", object[length(object)])
-    object <- gsub("^\'|\'$", "", object)
-    object <- paste(object, " <- ", sep = "")
+    object <- gsub('.sav', '.rda', object[length(object)])
+    # object <- gsub(".sav", "", object[length(object)])
+    # object <- gsub("^\'|\'$", "", object)
+    # object <- paste(object, " <- ", sep = "")
   }  
     
   calcLoc <- grep("aggregate|outfile|document|presorted|break|missing", 
@@ -58,17 +59,47 @@ aggregate_to_r <- function(x, dplyr = TRUE){
   } else {
     funct <- gsub("\\.", "", paste(funct, collapse = ", "))
     if(dplyr) {
+      if(grepl(" to ", funct, ignore.case = TRUE)) {
+        vars <- unlist(strsplit(funct, split = ' to |\\s?='))
+        digits <- sapply(1:2, function(xx) 
+          gsub('[a-zA-Z][[:punct:]]*', '', vars[xx]))
+        alpha <- sapply(1:2, function(xx)
+          gsub('[0-9]', '', vars[[xx]])[1])
+        num_digits <- sapply(1, function(xx) 
+          paste0('%0', nchar(digits[[xx]][1]), 'd'))
+        sequence <- lapply(1, function(xx)
+          sprintf(num_digits[[xx]], digits[[1]]:digits[[2]]))
+        var_names <- unlist(lapply(1, function(xx)
+          paste0(alpha[xx], sequence[[xx]])))
+        # vars <- paste(vars, collapse = ",")
+        funct_name <- unlist(strsplit(funct, split = '\\s?=\\s?'))[2]
+        nums <- eval(parse(text = paste0(digits[1], ':', digits[2])))
+        funct_name <- gsub('\\)', '', funct_name)
+        funct_name <- paste0(funct_name, '[', nums, '])')
+        
+        funct <- paste(paste0(var_names, ' = ', funct_name), collapse = ',')
+      }  
+      
       funct <- paste0('summarize(', funct, ')')
+      
     } else {
       funct <- paste0("list(", funct, ")")
     }
   }  
   
   if(dplyr){
-    values <- c('x', aggVarsBy, funct)
-    finMat <- matrix(nrow = length(funct) + 1, ncol = 1)
-    finMat[1] <- 'library(dplyr)'
-    finMat[2] <- paste(values, collapse = ' %>% ')
+    if(is.null(object)){
+      values <- c('x', aggVarsBy, funct)
+      finMat <- matrix(nrow = length(funct) + 1, ncol = 1)
+      finMat[1] <- 'library(dplyr)'
+      finMat[2] <- paste(values, collapse = ' %>% ')
+    } else {
+      values <- c('tmp <- x', aggVarsBy, funct)
+      finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
+      finMat[1] <- 'library(dplyr); options(useFancyQuotes = FALSE)'
+      finMat[2] <- paste(values, collapse = ' %>% ') 
+      finMat[3] <- paste0('save(tmp, file = ', object, ')')
+    }
   } else {
     finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
     finMat[1] <- 'library(data.table)'
