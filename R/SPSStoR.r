@@ -57,6 +57,10 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
     loc <- grep('match files', spssfunc, ignore.case = TRUE)
     spssfunc[loc] <- 'matchfiles'
   }
+  if(any(grepl('rename variables', spssfunc, ignore.case = TRUE))) {
+    loc <- grep('rename variables', spssfunc, ignore.case = TRUE)
+    spssfunc[loc] <- 'renamevariables'
+  }
   if(any(grepl('do repeat', spssfunc, ignore.case = TRUE))){
     loc <- grep('do repeat', spssfunc, ignore.case = TRUE)
     spssfunc[loc] <- 'dorepeat'
