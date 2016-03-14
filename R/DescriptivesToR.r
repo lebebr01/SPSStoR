@@ -10,6 +10,10 @@ descriptives_to_r <- function(x, dplyr = TRUE){
   
   varsLoc <- grep("variables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))
+  if(length(x) != length(grep('\\/', x)) + length(varsLoc)) {
+    vars2 <- x[-c(varsLoc, grep('\\/', x))]
+    vars <- c(vars, vars2)
+  }
   descVars <- paste(unlist(strsplit(gsub("^\\s+|\\s+$", "", vars), " ")), collapse = ", ")
   
   statLoc <- grep("statistics\\s?=|stats\\s?=", x, ignore.case = TRUE)
@@ -28,6 +32,14 @@ descriptives_to_r <- function(x, dplyr = TRUE){
   if(grepl("default", stats) == TRUE){
     stats <- paste("mean", "sd", "min", "max", sep = ", ")
   }
+  
+  if(any(grepl('save', x, ignore.case = TRUE))) {
+    comp_vars <- unlist(strsplit(descVars, ', '))
+    scale_names <- paste0('x$Z', comp_vars, ' <- ')
+    
+    funcs <- paste0('scale(', comp_vars, ')')
+    scale_command <- paste0(scale_names, funcs)
+  }
     
   if(grepl("skewness|kurtosis", stats) == TRUE){
     finMat <- matrix(ncol = 1, nrow = 3)
@@ -38,6 +50,10 @@ descriptives_to_r <- function(x, dplyr = TRUE){
     finMat <- matrix(ncol = 1, nrow = 2)
     finMat[1] <- 'library(SPSStoR)'
     finMat[2] <- paste('with(x, descmat(x = list(', descVars, '), ', stats, '))', sep = '')
+  }
+  
+  if(any(grepl('save', x, ignore.case = TRUE))) {
+    finMat <- c(finMat, scale_command)
   }
   
  finMat
