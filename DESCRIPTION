@@ -12,3 +12,4 @@ Depends:
     methods,
     stringr
 LazyData: true
+RoxygenNote: 5.0.1

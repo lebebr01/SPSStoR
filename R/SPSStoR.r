@@ -52,6 +52,12 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   if(any(grepl("file handle", spssfunc, ignore.case = TRUE))){
     loc <- grep("file handle", spssfunc, ignore.case = TRUE)
     spssfunc[loc] <- 'filehandle'
+    
+    filehandle_loc <- grep('file handle', x, ignore.case = TRUE)
+    filehandle_name <- x[filehandle_loc]
+    filehandle_name <- gsub('file handle |\\/name.+', '', 
+                            filehandle_name, ignore.case = TRUE)
+    x <- gsub(as.character(filehandle_name), '', x)
   }
   if(any(grepl('match files', spssfunc, ignore.case = TRUE))) {
     loc <- grep('match files', spssfunc, ignore.case = TRUE)
