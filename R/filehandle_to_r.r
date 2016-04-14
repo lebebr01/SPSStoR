@@ -22,7 +22,7 @@ filehandle_to_r <- function(x, dplyr = TRUE) {
   path <- stringr::str_extract(split_var[2], "\'([^]]+)\'")
   path <- gsub("\'", '', path)
   
-  finMat <- paste0('setwd(', path, ')')
+  finMat <- paste0('setwd(', sQuote(path), ')')
   
   finMat
   

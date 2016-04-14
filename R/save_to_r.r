@@ -29,7 +29,7 @@ save_to_r <- function(x, dplyr = TRUE) {
   
   finMat <- matrix(ncol = 1, nrow = 1)
   
-  finMat[1] <- paste0('save(x[', keep_vars, '], file = ', file_loc, ')')
+  finMat[1] <- paste0('save(x[', keep_vars, '], file = ', sQuote(file_loc), ')')
   
   finMat
   

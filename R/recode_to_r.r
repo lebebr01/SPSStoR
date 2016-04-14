@@ -16,6 +16,13 @@ recode_to_r <- function(x, dplyr = TRUE) {
   x <- gsub("\\.$", "", x)
   
   if(length(x) == 1) {
+    start <- regexpr('\\(', x)
+    end <- regexpr('\\)', x)
+    
+    recode_section <- gsub(' ', '', substr(x, start = start, stop = end))
+  }
+  
+  if(length(x) == 1) {
     x <- unlist(strsplit(x, split = ' '))
   }
   
@@ -26,11 +33,19 @@ recode_to_r <- function(x, dplyr = TRUE) {
     to_var <- x[1]
   }
   
-  recode_items <- x[grepl('\\(', x)]
-  recode_items <- gsub('\\(|\\)', '', recode_items)
-  recode_items <- paste(recode_items, collapse = ';')
-  recode_items <- gsub("ELSE", 'else', recode_items)
-  
+
+  if(length(x) == 1) {
+    recode_items <- recode_section[grepl('\\(', recode_section)]
+    recode_items <- gsub('\\(|\\)', '', recode_items)
+    recode_items <- paste(recode_items, collapse = ';')
+    recode_items <- gsub("ELSE", 'else', recode_items)
+  } else {
+    recode_items <- x[grepl('\\(', x)]
+    recode_items <- gsub('\\(|\\)', '', recode_items)
+    recode_items <- paste(recode_items, collapse = ';')
+    recode_items <- gsub("ELSE", 'else', recode_items)
+  }
+
   finMat <- matrix(nrow = 3, ncol = 1)
   finMat[1] <- 'library(car)'
   finMat[2] <- 'options(useFancyQuotes = FALSE)'

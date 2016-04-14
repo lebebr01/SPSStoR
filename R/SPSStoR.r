@@ -86,6 +86,16 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
       unlist(strsplit(spssfunc[k], " "))[1])
   }
   
+  if(any(grepl('define', spssfunc, ignore.case = TRUE))) {
+    loc <- grep('define', spssfunc, ignore.case = TRUE)
+    spssfunc[loc] <- 'define'
+  }
+  
+  if(any(grepl('recode', spssfunc, ignore.case = TRUE))) {
+    loc <- grep('recode', spssfunc, ignore.case = TRUE)
+    spssfunc[loc] <- 'recode'
+  }
+  
   if(any(grepl(" ", spssfunc) == TRUE)){
     loc <- grep(' ', spssfunc)
     spssfunc[loc] <- sapply(loc, function(l) 
@@ -113,6 +123,7 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   
   rsyntax <- c("# x is the name of your data frame", rsyntax)
   rsyntax <- rsyntax[!duplicated(rsyntax, incomparables = "p")]
+  rsyntax <- gsub('\\\\', '/', rsyntax)
   
   if(writeRscript == TRUE){
     if(is.null(filePath) == TRUE){ filePath <- getwd()}
