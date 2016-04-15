@@ -20,6 +20,8 @@ recode_to_r <- function(x, dplyr = TRUE) {
     end <- regexpr('\\)', x)
     
     recode_section <- gsub(' ', '', substr(x, start = start, stop = end))
+  } else {
+    recode_section <- NULL
   }
   
   if(length(x) == 1) {
@@ -34,7 +36,7 @@ recode_to_r <- function(x, dplyr = TRUE) {
   }
   
 
-  if(length(x) == 1) {
+  if(is.null(recode_section) == FALSE) {
     recode_items <- recode_section[grepl('\\(', recode_section)]
     recode_items <- gsub('\\(|\\)', '', recode_items)
     recode_items <- paste(recode_items, collapse = ';')
@@ -50,7 +52,7 @@ recode_to_r <- function(x, dplyr = TRUE) {
   finMat[1] <- 'library(car)'
   finMat[2] <- 'options(useFancyQuotes = FALSE)'
   finMat[3] <- paste0('x$', to_var, ' <- recode(x$', from_var, ', ', 
-                      dQuote(recode_items), ')')
+                      sQuote(recode_items), ')')
   
   finMat 
   

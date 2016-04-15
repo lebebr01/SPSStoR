@@ -27,6 +27,8 @@
 spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL){
   
   x <- readLines(file)
+  
+  x <- gsub('execute.', '', x, ignore.case = TRUE)
   x <- gsub("^\\s+|\\s+$", "", x)
   x <- gsub("\t", " ", x)
   
