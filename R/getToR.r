@@ -17,7 +17,12 @@ get_to_r <- function(x, dplyr = TRUE){
                    (which(strsplit(x[fileLoc], '')[[1]]=='\'')[2]))
   }
   
-  rx <- paste0("x <- read_sav(", path, ")")
+  # if(grepl("^'/|^\\\\", path)) {
+  #   path <- gsub("^'/", "'", path)
+  #   path <- gsub("^'\\\\", "'", path)
+  # }
+  
+  rx <- paste0("x <- read_sav(paste(getwd(),", path, ", sep = '/'))")
   finMat <- paste("library(haven)", rx, sep = "\n")
 finMat
 }

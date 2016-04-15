@@ -4,12 +4,14 @@
 \alias{descmat}
 \title{Descriptives Matrix function}
 \usage{
-descmat(x, ...)
+descmat(x, ..., na.rm = TRUE)
 }
 \arguments{
 \item{x}{A list of variables to compute descriptive statistics for.}
 
 \item{...}{Statistics to be cacluated.}
+
+\item{na.rm}{Whether missing values will be removed, defaults to TRUE.}
 }
 \description{
 Computes numerous descriptive statistics returning a matrix

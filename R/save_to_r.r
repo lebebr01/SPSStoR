@@ -18,18 +18,26 @@ save_to_r <- function(x, dplyr = TRUE) {
   keep_loc <- grep('keep\\s*=', x, ignore.case = TRUE)
   keep_vars <- x[(keep_loc+1):length(x)]
   keeps_vars <- gsub("^\\s+|\\s+$", "", keep_vars)
-  keep_vars <- paste0('c(', paste(keep_vars, collapse = ','), ')')
+  keep_vars <- paste(keep_vars, collapse = '","')
+  keep_vars <- gsub('^\\s+|\\s+$', '', keep_vars)
+  keep_vars <- paste0('c("', keep_vars, '")')
   
   outfile_loc <- grep('outfile\\s*=', x, ignore.case = TRUE)
   
   x <- gsub('/keep\\s*=|outfile\\s*=', '', x, ignore.case = TRUE)
   
   file_loc <- gsub("^ \\'|\\' $", "", x[1])
-  file_loc <- gsub('.sav', '.rda', file_loc)
+  #file_loc <- gsub('.sav', '.rda', file_loc)
+  if(grepl('^/', file_loc)) {
+    file_loc <- gsub('^/', '', file_loc)
+  }
   
-  finMat <- matrix(ncol = 1, nrow = 1)
+  finMat <- matrix(ncol = 1, nrow = 2)
   
-  finMat[1] <- paste0('save(x[', keep_vars, '], file = ', sQuote(file_loc), ')')
+  #finMat[1] <- 'library(foreign)'
+  finMat[1] <- paste0('tmp <- x[', keep_vars, ']')
+  finMat[2] <- paste0('save(tmp, file = ', sQuote(file_loc), 
+                      ')')
   
   finMat
   

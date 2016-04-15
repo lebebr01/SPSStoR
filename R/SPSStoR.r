@@ -19,12 +19,14 @@
 #'   By default this is FALSE.
 #' @param filePath Path to save R script. 
 #'   Default is NULL which saves to working directory as 'rScript.r'.
+#' @importFrom formatR tidy_source
 #' @export 
 #' @examples 
 #' \donttest{
 #' 
 #' }
-spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL){
+spss_to_r <- function(file, dplyr = TRUE, format = TRUE,
+                      writeRscript = FALSE, filePath = NULL){
   
   x <- readLines(file)
   
@@ -124,8 +126,12 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
   }  
   
   rsyntax <- c("# x is the name of your data frame", rsyntax)
-  rsyntax <- rsyntax[!duplicated(rsyntax, incomparables = "p")]
+  #rsyntax <- rsyntax[!duplicated(rsyntax, incomparables = "p")]
   rsyntax <- gsub('\\\\', '/', rsyntax)
+  
+  if(format) {
+    rsyntax <- formatR::tidy_source(text = rsyntax, output = FALSE)
+  }
   
   if(writeRscript == TRUE){
     if(is.null(filePath) == TRUE){ filePath <- getwd()}

@@ -9,17 +9,18 @@
 #' 
 #' @param x A list of variables to compute descriptive statistics for.
 #' @param ... Statistics to be cacluated.
+#' @param na.rm Whether missing values will be removed, defaults to TRUE.
 #' @export 
 #' @examples 
 #' \donttest{
 #' ## Example with college football data
 #' data(cfbMinn)
 #' }
-descmat <- function(x, ...){ 
+descmat <- function(x, ..., na.rm = TRUE){ 
   fun.names = sapply(lapply(substitute(list(...)), deparse)[-1], paste, collapse="") 
   mthd<-list(...) 
   if(!is.list(x)) x = list(x) 
-  res = t(sapply(x, function(y) sapply(mthd, function(m) do.call(m, list(y)) ))) 
+  res = t(sapply(x, function(y) sapply(mthd, function(m) do.call(m, list(y))))) 
   colnames(res) = fun.names 
   rownames(res) = names(x) 
   res 

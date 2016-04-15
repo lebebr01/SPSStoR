@@ -49,7 +49,7 @@ compute_to_r <- function(x, dplyr = TRUE) {
   }
   
   finMat <- matrix(nrow = 1, ncol = 1)
-  finMat[1] <- paste0('x$', varname, ' <- ', expr)
+  finMat[1] <- paste0('x$', varname, ' <- with(x, ', expr, ')')
   
   finMat  
 }

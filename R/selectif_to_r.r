@@ -36,7 +36,7 @@ selectif_to_r <- function(x, dplyr = TRUE) {
   
   finMat <- matrix(nrow = 2, ncol = 1)
   finMat[1] <- 'library(dplyr)'
-  finMat[2] <- paste0('x <- select(', x, ')')
+  finMat[2] <- paste0('x <- x %>% filter(', x, ')')
   
   finMat 
   

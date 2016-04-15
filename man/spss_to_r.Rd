@@ -4,7 +4,8 @@
 \alias{spss_to_r}
 \title{Master SPSS to R function}
 \usage{
-spss_to_r(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
+spss_to_r(file, dplyr = TRUE, format = TRUE, writeRscript = FALSE,
+  filePath = NULL)
 }
 \arguments{
 \item{file}{Path of text file that has SPSS syntax}

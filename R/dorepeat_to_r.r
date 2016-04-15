@@ -80,8 +80,8 @@ dorepeat_to_r <- function(x, dplyr = TRUE) {
           '), nrow = nrow(x)); colnames(mat) <- ', object_name[2])
   finMat[length(placeholders) + 2] <- 
     paste0('for(i in seq_along(', object_name[1], ')) {',
-           object_name[2], '[, i] <- ', statement, '), ', 
-           true_val, ', ', false_val, ')}; x <- cbind(x, mat)')
+           'mat[, i] <- with(x, ', statement, '), ', 
+           true_val, ', ', false_val, '))}; x <- cbind(x, mat)')
   finMat
   
 }

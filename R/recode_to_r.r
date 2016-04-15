@@ -52,7 +52,7 @@ recode_to_r <- function(x, dplyr = TRUE) {
   finMat[1] <- 'library(car)'
   finMat[2] <- 'options(useFancyQuotes = FALSE)'
   finMat[3] <- paste0('x$', to_var, ' <- recode(x$', from_var, ', ', 
-                      sQuote(recode_items), ')')
+                      dQuote(recode_items), ')')
   
   finMat 
   

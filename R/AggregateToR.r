@@ -83,7 +83,7 @@ aggregate_to_r <- function(x, dplyr = TRUE){
       }  
       
       funct <- paste0('summarize_each(funs(', functs[1], 
-                      '), one_of(', functs[2], '))')
+                      '(., na.rm = TRUE)), one_of(', functs[2], '))')
       
     } else {
       funct <- paste0("list(", funct, ")")
@@ -98,10 +98,13 @@ aggregate_to_r <- function(x, dplyr = TRUE){
       finMat[2] <- paste(values, collapse = ' %>% ')
     } else {
       values <- c('tmp <- x', aggVarsBy, funct)
-      finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
+      finMat <- matrix(nrow = length(funct) + 3, ncol = 1)
       finMat[1] <- 'library(dplyr); options(useFancyQuotes = FALSE)'
       finMat[2] <- paste(values, collapse = ' %>% ') 
-      finMat[3] <- paste0('save(tmp, file = ', object, ')')
+      finMat[3] <- paste0('names(tmp)[(ncol(tmp)-', length(var_names), '+1):ncol(tmp)] <- ',
+                          'c("', paste(var_names, collapse = '","'), '")')
+      finMat[4] <- paste0('save(tmp, file = ', object, 
+                          ')')
     }
   } else {
     finMat <- matrix(nrow = length(funct) + 2, ncol = 1)
