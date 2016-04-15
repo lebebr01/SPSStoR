@@ -75,12 +75,15 @@ aggregate_to_r <- function(x, dplyr = TRUE){
         funct_name <- unlist(strsplit(funct, split = '\\s?=\\s?'))[2]
         nums <- eval(parse(text = paste0(digits[1], ':', digits[2])))
         funct_name <- gsub('\\)', '', funct_name)
-        funct_name <- paste0(funct_name, '[', nums, '])')
+        #funct_name <- paste0(funct_name, '[', nums, '])')
         
-        funct <- paste(paste0(var_names, ' = ', funct_name), collapse = ',')
+        functs <- unlist(strsplit(funct_name, split = "\\("))
+        
+        #funct <- paste(paste0(var_names, ' = ', funct_name), collapse = ',')
       }  
       
-      funct <- paste0('summarize(', funct, ')')
+      funct <- paste0('summarize_each(funs(', functs[1], 
+                      '), one_of(', functs[2], '))')
       
     } else {
       funct <- paste0("list(", funct, ")")
