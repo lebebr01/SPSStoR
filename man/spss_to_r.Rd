@@ -32,9 +32,4 @@ it does not wrap the code and so copy and pasting may be needed.  As an alternat
 the R syntax can be saved to an R script file. No column names or row names are 
 printed when saving this script file.
 }
-\examples{
-\donttest{
-
-}
-}
 

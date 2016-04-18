@@ -20,10 +20,6 @@
 #' @param filePath Path to save R script. 
 #'   Default is NULL which saves to working directory as 'rScript.r'.
 #' @export 
-#' @examples 
-#' \donttest{
-#' 
-#' }
 spss_to_r <- function(file, dplyr = TRUE,
                       writeRscript = FALSE, filePath = NULL){
   
