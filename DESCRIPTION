@@ -1,7 +1,7 @@
 Package: SPSStoR
 Maintainer: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
 Author: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
-Version: 0.2
+Version: 0.2.1
 License: MIT + file LICENSE
 Title: SPSS syntax to R syntax
 Description: This package turns SPSS syntax
