@@ -10,8 +10,9 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-aggregate_to_r <- function(x, dplyr = TRUE){
+aggregate_to_r <- function(x, dplyr = TRUE, ...){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){
     aggVarsOrd <- NULL 

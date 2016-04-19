@@ -5,8 +5,9 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-oneway_to_r <- function(x, dplyr = TRUE){
+oneway_to_r <- function(x, dplyr = TRUE, ...){
  
   x <- gsub("oneway\\s+", "", x, ignore.case = TRUE)
   

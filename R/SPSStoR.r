@@ -121,7 +121,7 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE,
     rsyntax <- FUN(xChunks, dp)
   } else {
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
-      do.call(spssToR[[x]], xChunks[x], dplyr)))
+      do.call(spssToR[[x]], xChunks[x], dplyr, nosave)))
   }  
   
   rsyntax <- c("# x is the name of your data frame", rsyntax)

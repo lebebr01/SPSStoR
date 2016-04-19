@@ -5,9 +5,10 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @importFrom stringr str_c
 #' @export
-graph_to_r <- function(x, dplyr = TRUE){
+graph_to_r <- function(x, dplyr = TRUE, ...){
   
   titleLoc <- grep("\\/title\\s?=", x, ignore.case = TRUE)
   if(length(titleLoc) > 0){

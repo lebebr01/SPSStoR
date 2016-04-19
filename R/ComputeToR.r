@@ -8,8 +8,9 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-compute_to_r <- function(x, dplyr = TRUE) {
+compute_to_r <- function(x, dplyr = TRUE, ...) {
   
   x <- gsub('compute', '', x, ignore.case = TRUE)
   x <- gsub("^\\s+|\\s+$", "", x)

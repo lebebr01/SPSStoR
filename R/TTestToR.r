@@ -5,8 +5,9 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-ttest_to_r <- function(x, dplyr = TRUE){
+ttest_to_r <- function(x, dplyr = TRUE, ...){
 
   varsLoc <- grep("variables\\s?=", x, ignore.case = TRUE)
   vars <- substr(x[varsLoc], (which(strsplit(x[varsLoc], '')[[1]]=='=')+1), nchar(x[varsLoc]))

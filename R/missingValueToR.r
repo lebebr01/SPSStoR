@@ -6,8 +6,9 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-missingvalues_to_r <- function(x, dplyr = TRUE){
+missingvalues_to_r <- function(x, dplyr = TRUE, ...) {
   
   x <- gsub("missing values", "", x, ignore.case = TRUE)
   x <- gsub("^\\s+", "", x)
