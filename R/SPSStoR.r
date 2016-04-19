@@ -127,6 +127,10 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE,
   rsyntax <- c("# x is the name of your data frame", rsyntax)
   #rsyntax <- rsyntax[!duplicated(rsyntax, incomparables = "p")]
   rsyntax <- gsub('\\\\', '/', rsyntax)
+  
+  library_loc <- grep('library(.*)', rsyntax)
+  library_uniq <- unique(rsyntax[library_loc])
+  rsyntax <- c(library_uniq, rsyntax[-library_loc])
 
   if(writeRscript == TRUE){
     if(is.null(filePath) == TRUE){ filePath <- getwd()}
