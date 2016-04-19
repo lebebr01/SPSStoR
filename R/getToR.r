@@ -5,8 +5,12 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param nosave A value of FALSE processes the save commands (default),
+#'              a value of TRUE continues processing within R, overriding 
+#'              default x object. Extreme care with this feature as 
+#'              get commands will be ignored.
 #' @export
-get_to_r <- function(x, dplyr = TRUE){
+get_to_r <- function(x, dplyr = TRUE, nosave = FALSE){
   
   fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)
   if(any(grepl('\"', x)) == TRUE){
@@ -22,8 +26,13 @@ get_to_r <- function(x, dplyr = TRUE){
   #   path <- gsub("^'\\\\", "'", path)
   # }
   
-  rx <- paste0("x <- read_sav(paste(getwd(),", path, ", sep = '/'))")
-  finMat <- paste("library(haven)", rx, sep = "\n")
+  if(nosave) {
+    finMat <- NULL
+  } else {
+    rx <- paste0("x <- read_sav(paste(getwd(),", path, ", sep = '/'))")
+    finMat <- paste("library(haven)", rx, sep = "\n")
+  }
+
 finMat
 }
 
@@ -34,8 +43,12 @@ finMat
 #' excel data files.
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @param nosave A value of FALSE processes the save commands (default),
+#'              a value of TRUE continues processing within R, overriding 
+#'              default x object. Extreme care with this feature as 
+#'              get commands will be ignored. (currently not supported).
 #' @export
-getdata_to_r <- function(x) {
+getdata_to_r <- function(x, nosave = FALSE) {
   
   fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)
   if(any(grepl('\"', x)) == TRUE){

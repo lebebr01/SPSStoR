@@ -19,9 +19,13 @@
 #'   By default this is FALSE.
 #' @param filePath Path to save R script. 
 #'   Default is NULL which saves to working directory as 'rScript.r'.
+#' @param nosave A value of FALSE processes the save commands (default),
+#'              a value of TRUE continues processing within R, overriding 
+#'              default x object. Extreme care with this feature as 
+#'              get commands will be ignored.
 #' @export 
-spss_to_r <- function(file, dplyr = TRUE,
-                      writeRscript = FALSE, filePath = NULL){
+spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE, 
+                      filePath = NULL, nosave = FALSE){
   
   x <- readLines(file)
   

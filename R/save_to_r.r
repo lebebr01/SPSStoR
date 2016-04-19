@@ -8,8 +8,11 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param nosave A value of FALSE processes the save commands (default),
+#'              a value of TRUE continues processing within R, overriding 
+#'              default x object. Extreme care with this feature.
 #' @export
-save_to_r <- function(x, dplyr = TRUE) {
+save_to_r <- function(x, dplyr = TRUE, nosave = FALSE) {
   
   x <- gsub('save', '', x, ignore.case = TRUE)
   x <- gsub("^\\s+|\\s+$", "", x)
@@ -36,8 +39,13 @@ save_to_r <- function(x, dplyr = TRUE) {
   
   #finMat[1] <- 'library(foreign)'
   finMat[1] <- paste0('tmp <- x[', keep_vars, ']')
-  finMat[2] <- paste0('save(tmp, file = ', sQuote(file_loc), 
-                      ')')
+  
+  if(nosave) {
+    finMat[2] <- 'x <- tmp'
+  } else {
+    finMat[2] <- paste0('save(tmp, file = ', sQuote(file_loc), 
+                        ')')
+  }
   
   finMat
   
