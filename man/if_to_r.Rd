@@ -4,13 +4,15 @@
 \alias{if_to_r}
 \title{If to R}
 \usage{
-if_to_r(x, dplyr = TRUE)
+if_to_r(x, dplyr = TRUE, ...)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{...}{Additional arguments passed to function, not currently supported.}
 }
 \description{
 Converts SPSS if statements to R if statements.

@@ -10,30 +10,31 @@
 #'              default x object. Extreme care with this feature as 
 #'              get commands will be ignored.
 #' @export
-get_to_r <- function(x, dplyr = TRUE, nosave = FALSE){
-  
-  fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)
-  if(any(grepl('\"', x)) == TRUE){
-    path <- substr(x[fileLoc], (which(strsplit(x[fileLoc], '')[[1]]=='\"')[1]), 
-                   (which(strsplit(x[fileLoc], '')[[1]]=='\"')[2]))
-  } else {
-    path <- substr(x[fileLoc], (which(strsplit(x[fileLoc], '')[[1]]=='\'')[1]), 
-                   (which(strsplit(x[fileLoc], '')[[1]]=='\'')[2]))
-  }
-  
-  # if(grepl("^'/|^\\\\", path)) {
-  #   path <- gsub("^'/", "'", path)
-  #   path <- gsub("^'\\\\", "'", path)
-  # }
+get_to_r <- function(x, dplyr = TRUE, nosave = FALSE) {
   
   if(nosave) {
-    finMat <- NULL
+    finMat = ''
   } else {
+    
+    fileLoc <- grep("file\\s?=", x, ignore.case = TRUE)
+    if(any(grepl('\"', x)) == TRUE){
+      path <- substr(x[fileLoc], (which(strsplit(x[fileLoc], '')[[1]]=='\"')[1]), 
+                     (which(strsplit(x[fileLoc], '')[[1]]=='\"')[2]))
+    } else {
+      path <- substr(x[fileLoc], (which(strsplit(x[fileLoc], '')[[1]]=='\'')[1]), 
+                     (which(strsplit(x[fileLoc], '')[[1]]=='\'')[2]))
+    }
+    
+    # if(grepl("^'/|^\\\\", path)) {
+    #   path <- gsub("^'/", "'", path)
+    #   path <- gsub("^'\\\\", "'", path)
+    # }
+    
     rx <- paste0("x <- read_sav(paste(getwd(),", path, ", sep = '/'))")
     finMat <- paste("library(haven)", rx, sep = "\n")
   }
-
-finMat
+  
+  finMat
 }
 
 

@@ -77,8 +77,9 @@ oneway_to_r <- function(x, dplyr = TRUE, ...){
 #' Converts SPSS unianova syntax to R syntax
 #' 
 #' @param x SPSS syntax - read in by SPSStoR function
+#' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-unianova_to_r <- function(x){
+unianova_to_r <- function(x, ...){
   
   x <- gsub("unianova\\s*", "", x, ignore.case = TRUE)
   if(nchar(x[1]) == 0) { x <- x[-1] }

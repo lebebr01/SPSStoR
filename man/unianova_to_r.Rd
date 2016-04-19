@@ -4,10 +4,12 @@
 \alias{unianova_to_r}
 \title{Unianova to R}
 \usage{
-unianova_to_r(x)
+unianova_to_r(x, ...)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
+
+\item{...}{Additional arguments passed to function, not currently supported.}
 }
 \description{
 Converts SPSS unianova syntax to R syntax
