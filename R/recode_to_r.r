@@ -48,10 +48,9 @@ recode_to_r <- function(x, dplyr = TRUE) {
     recode_items <- gsub("ELSE", 'else', recode_items)
   }
 
-  finMat <- matrix(nrow = 3, ncol = 1)
+  finMat <- matrix(nrow = 2, ncol = 1)
   finMat[1] <- 'library(car)'
-  finMat[2] <- 'options(useFancyQuotes = FALSE)'
-  finMat[3] <- paste0('x$', to_var, ' <- recode(x$', from_var, ', ', 
+  finMat[2] <- paste0('x$', to_var, ' <- recode(x$', from_var, ', ', 
                       dQuote(recode_items), ')')
   
   finMat 

@@ -99,7 +99,7 @@ aggregate_to_r <- function(x, dplyr = TRUE){
     } else {
       values <- c('tmp <- x', aggVarsBy, funct)
       finMat <- matrix(nrow = length(funct) + 3, ncol = 1)
-      finMat[1] <- 'library(dplyr); options(useFancyQuotes = FALSE)'
+      finMat[1] <- 'library(dplyr)'
       finMat[2] <- paste(values, collapse = ' %>% ') 
       finMat[3] <- paste0('names(tmp)[(ncol(tmp)-', length(var_names), '+1):ncol(tmp)] <- ',
                           'c("', paste(var_names, collapse = '","'), '")')

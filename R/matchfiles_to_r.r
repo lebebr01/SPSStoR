@@ -42,7 +42,7 @@ matchfiles_to_r <- function(x, dplyr = TRUE) {
   }
   
   finMat <- matrix(nrow = 3, ncol = 1)
-  finMat[1] <- 'library(dplyr); options(useFanceQuotes = FALSE); library(haven)'
+  finMat[1] <- 'library(dplyr); library(haven)'
   finMat[2] <- paste0('table_var <- read_spss(path = ', table_var, ')')
   finMat[3] <- paste0('x <- left_join(', file_var, ', table_var', 
                       ', by = ', sQuote(by_var), ')')
