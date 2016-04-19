@@ -4,13 +4,17 @@
 \alias{save_to_r}
 \title{Save to R}
 \usage{
-save_to_r(x, dplyr = TRUE)
+save_to_r(x, dplyr = TRUE, nosave = FALSE)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{nosave}{A value of FALSE processes the save commands (default),
+a value of TRUE continues processing within R, overriding 
+default x object. Extreme care with this feature.}
 }
 \description{
 Converts SPSS Save statements to valid Save statements in R.

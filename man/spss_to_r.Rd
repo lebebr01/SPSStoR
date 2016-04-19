@@ -4,7 +4,8 @@
 \alias{spss_to_r}
 \title{Master SPSS to R function}
 \usage{
-spss_to_r(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL)
+spss_to_r(file, dplyr = TRUE, writeRscript = FALSE, filePath = NULL,
+  nosave = FALSE)
 }
 \arguments{
 \item{file}{Path of text file that has SPSS syntax}
@@ -17,6 +18,11 @@ By default this is FALSE.}
 
 \item{filePath}{Path to save R script. 
 Default is NULL which saves to working directory as 'rScript.r'.}
+
+\item{nosave}{A value of FALSE processes the save commands (default),
+a value of TRUE continues processing within R, overriding 
+default x object. Extreme care with this feature as 
+get commands will be ignored.}
 }
 \description{
 This function inputs SPSS syntax and returns comparable R syntax.

@@ -4,10 +4,15 @@
 \alias{getdata_to_r}
 \title{Get Data to R}
 \usage{
-getdata_to_r(x)
+getdata_to_r(x, nosave = FALSE)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
+
+\item{nosave}{A value of FALSE processes the save commands (default),
+a value of TRUE continues processing within R, overriding 
+default x object. Extreme care with this feature as 
+get commands will be ignored. (currently not supported).}
 }
 \description{
 Converst SPSS Get Data command to R syntax.  Available for delimited or 

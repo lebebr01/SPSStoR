@@ -4,13 +4,15 @@
 \alias{frequencies_to_r}
 \title{Frequencies to R}
 \usage{
-frequencies_to_r(x, dplyr = TRUE)
+frequencies_to_r(x, dplyr = TRUE, ...)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{...}{Additional arguments passed to function, not currently supported.}
 }
 \description{
 Convert SPSS frequencies command to R syntax.

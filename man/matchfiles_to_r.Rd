@@ -4,13 +4,18 @@
 \alias{matchfiles_to_r}
 \title{Match Files to R}
 \usage{
-matchfiles_to_r(x, dplyr = TRUE)
+matchfiles_to_r(x, dplyr = TRUE, nosave = FALSE)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{nosave}{A value of FALSE processes the save commands (default),
+a value of TRUE continues processing within R, overriding 
+default x object. Extreme care with this feature as 
+get commands will be ignored.}
 }
 \description{
 Converts SPSS match files statements to valid match files statements in R.

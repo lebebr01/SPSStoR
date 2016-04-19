@@ -4,13 +4,15 @@
 \alias{missingvalues_to_r}
 \title{Missing Values to R}
 \usage{
-missingvalues_to_r(x, dplyr = TRUE)
+missingvalues_to_r(x, dplyr = TRUE, ...)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{...}{Additional arguments passed to function, not currently supported.}
 }
 \description{
 Converts SPSS missing value syntax to R code. Currently assumes

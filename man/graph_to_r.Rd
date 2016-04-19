@@ -4,13 +4,15 @@
 \alias{graph_to_r}
 \title{Graphics to R}
 \usage{
-graph_to_r(x, dplyr = TRUE)
+graph_to_r(x, dplyr = TRUE, ...)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{...}{Additional arguments passed to function, not currently supported.}
 }
 \description{
 Convert SPSS graph command to an R graph call using ggplot2.
