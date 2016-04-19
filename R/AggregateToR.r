@@ -10,9 +10,12 @@
 #' @param x SPSS syntax - read in by SPSStoR function
 #' @param dplyr A value of TRUE uses dplyr syntax (default), 
 #'              a value of FALSE uses data.table syntax
+#' @param nosave A value of FALSE processes the save commands (default),
+#'              a value of TRUE continues processing within R, overriding 
+#'              default x object. Extreme care with this feature.
 #' @param ... Additional arguments passed to function, not currently supported.
 #' @export
-aggregate_to_r <- function(x, dplyr = TRUE, ...){
+aggregate_to_r <- function(x, dplyr = TRUE, nosave = FALSE, ...){
   
   if(length(grep("\\/break\\s?=", x, ignore.case = TRUE)) < 1){
     aggVarsOrd <- NULL 
@@ -104,8 +107,12 @@ aggregate_to_r <- function(x, dplyr = TRUE, ...){
       finMat[2] <- paste(values, collapse = ' %>% ') 
       finMat[3] <- paste0('names(tmp)[(ncol(tmp)-', length(var_names), '+1):ncol(tmp)] <- ',
                           'c("', paste(var_names, collapse = '","'), '")')
-      finMat[4] <- paste0('save(tmp, file = ', object, 
-                          ')')
+      if(nosave) {
+        finMat[4] <- ''
+      } else {
+        finMat[4] <- paste0('save(tmp, file = ', object, 
+                            ')')
+      }
     }
   } else {
     finMat <- matrix(nrow = length(funct) + 2, ncol = 1)

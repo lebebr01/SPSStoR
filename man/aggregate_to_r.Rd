@@ -4,13 +4,17 @@
 \alias{aggregate_to_r}
 \title{Aggregate to R}
 \usage{
-aggregate_to_r(x, dplyr = TRUE, ...)
+aggregate_to_r(x, dplyr = TRUE, nosave = FALSE, ...)
 }
 \arguments{
 \item{x}{SPSS syntax - read in by SPSStoR function}
 
 \item{dplyr}{A value of TRUE uses dplyr syntax (default), 
 a value of FALSE uses data.table syntax}
+
+\item{nosave}{A value of FALSE processes the save commands (default),
+a value of TRUE continues processing within R, overriding 
+default x object. Extreme care with this feature.}
 
 \item{...}{Additional arguments passed to function, not currently supported.}
 }
