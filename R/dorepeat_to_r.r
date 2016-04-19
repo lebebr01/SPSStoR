@@ -51,11 +51,21 @@ dorepeat_to_r <- function(x, dplyr = TRUE, ...) {
   
   statement_loc <- grep('/', x)
   statement <- x[-statement_loc]
-  for(i in seq_along(object_name)) {
-    statement <- gsub(paste0(object_name[i]), 
-                      paste0(object_name[i], '[i]'),
-                      statement)
+  true_val <- gsub('^.*=\\s*', '', statement)
+  if(grepl('[0-9]', true_val)) {
+    for(i in seq_along(object_name)) {
+      statement <- gsub(paste0(object_name[i]), 
+                        paste0(object_name[i], '[i]'),
+                        statement)
+    }
+  } else {
+    for(i in seq_along(object_name)) {
+      statement <- gsub(paste0(object_name[i]), 
+                        paste0('x[t,', object_name[i], '[i]]'),
+                        statement)
+    }
   }
+
   if(grepl('sysmis', statement, ignore.case = TRUE)) {
     statement <- gsub('sysmis', 'is.na', statement, ignore.case = TRUE)
   }
@@ -65,24 +75,39 @@ dorepeat_to_r <- function(x, dplyr = TRUE, ...) {
   if(grepl('ne ', statement, ignore.case = TRUE)) {
     statement <- gsub('ne ', '!=', statement, ignore.case = TRUE)
   }
-  true_val <- gsub('^.*=\\s*', '', statement)
   statement <- gsub('\\).*$', '', statement)
-  statement <- gsub('if ', 'ifelse(', statement)
-  if(grepl(paste0(object_name[1]), statement)){
-    false_val <- paste0(object_name[1], '[i]')
+  if(grepl('[0-9]', true_val)) {
+    statement <- gsub('if ', 'ifelse(', statement)
+    false_val <- 'NA'
   } else {
-    false_val <- paste0(object_name[2], '[i]')
+    statement <- gsub('if ', 'ifelse(', statement)
+    true_val2 <- paste0('x[', true_val, '[i]][1, ]')
+    if(grepl(paste0(object_name[1]), statement)){
+      false_val <- paste0(object_name[1], '[i]')
+    } else {
+      false_val <- paste0(object_name[2], '[i]')
+    }
   }
+
   
   finMat <- matrix(nrow = length(placeholders) + 2, ncol = 1)
   finMat[1:length(placeholders)] <- placeholders
-  finMat[length(placeholders) + 1] <- 
-    paste0('mat <- matrix(ncol = length(', object_name[2], 
-          '), nrow = nrow(x)); colnames(mat) <- ', object_name[2])
-  finMat[length(placeholders) + 2] <- 
-    paste0('for(i in seq_along(', object_name[1], ')) {',
-           'mat[, i] <- with(x, ', statement, '), ', 
-           true_val, ', ', false_val, '))}; x <- cbind(x, mat)')
+  if(grepl('[0-9]', true_val)) {
+    finMat[length(placeholders) + 1] <- 
+      paste0('mat <- matrix(ncol = length(', object_name[2], 
+             '), nrow = nrow(x)); colnames(mat) <- ', object_name[2])
+    finMat[length(placeholders) + 2] <- 
+      paste0('for(i in seq_along(', object_name[1], ')) {',
+             'mat[, i] <- with(x, ', statement, '), ', 
+             true_val, ', ', false_val, '))}; x <- cbind(x, mat)')
+  } else {
+    finMat[length(placeholders) + 1] <- 
+      paste0('for(i in seq_along(', object_name[1], ')) {',
+             'for(t in 1:nrow(x)) {',
+              'x[t,', false_val, '] <- ', statement, 
+             '), ', true_val2, ', x[t,', false_val, '])}}')
+  }
+  
   finMat
   
 }
