@@ -19,8 +19,8 @@ compute_to_r <- function(x, dplyr = TRUE, ...) {
   varname <- gsub("^\\s+|\\s+$", "", unlist(strsplit(x, '='))[1])
   expr <- gsub("^\\s+|\\s+$", "", unlist(strsplit(x, '='))[2])
   
-  if(grepl('\\(', expr)) {
-    func <- tolower(unlist(strsplit(expr, '\\('))[1])
+  func <- tolower(unlist(strsplit(expr, '\\('))[1])
+  if(grepl('\\(', expr) & nchar(func) > 0) {
     vars <- unlist(strsplit(expr, '\\('))[2]
     if(grepl(' to ', vars, ignore.case = TRUE)) {
       if(grepl(',', vars, ignore.case = TRUE)) {
