@@ -16,23 +16,23 @@ selectif_to_r <- function(x, dplyr = TRUE, ...) {
   x <- gsub("^\\s+|\\s+$", "", x)
   x <- gsub("\\.$", "", x)
   
-  if(grepl('eq|=', x, ignore.case = TRUE)) {
-    x <- gsub('eq|=', '==', x, ignore.case = TRUE)
+  if(grepl(' eq|=', x, ignore.case = TRUE)) {
+    x <- gsub(' eq|=', ' ==', x, ignore.case = TRUE)
   } 
-  if(grepl('ge', x, ignore.case = TRUE)) {
-    x <- gsub('ge', '>=', x, ignore.case = TRUE)
+  if(grepl(' ge', x, ignore.case = TRUE)) {
+    x <- gsub(' ge', ' >=', x, ignore.case = TRUE)
   }
-  if(grepl('gt', x, ignore.case = TRUE)) {
-    x <- gsub('gt', '>', x, ignore.case = TRUE)
+  if(grepl(' gt', x, ignore.case = TRUE)) {
+    x <- gsub(' gt', ' >', x, ignore.case = TRUE)
   } 
-  if(grepl('le', x, ignore.case = TRUE)) {
-    x <- gsub('le', '<=', x, ignore.case = TRUE)
+  if(grepl(' le', x, ignore.case = TRUE)) {
+    x <- gsub(' le', ' <=', x, ignore.case = TRUE)
   } 
-  if(grepl('lt', x, ignore.case = TRUE)) {
-    x <- gsub('lt', '<', x, ignore.case = TRUE)
+  if(grepl(' lt', x, ignore.case = TRUE)) {
+    x <- gsub(' lt', ' <', x, ignore.case = TRUE)
   } 
-  if(grepl('ne|~=|<>', x, ignore.case = TRUE)) {
-    x <- gsub('ne|~=|<>', '!=', x, ignore.case = TRUE)
+  if(grepl(' ne|~=|<>', x, ignore.case = TRUE)) {
+    x <- gsub(' ne|~=|<>', ' !=', x, ignore.case = TRUE)
   } 
   
   finMat <- matrix(nrow = 2, ncol = 1)

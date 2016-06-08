@@ -117,8 +117,9 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE,
     eval(parse(text = paste("x[", funcChunks[m], "]"))))
   
   if(is.list(xChunks) == FALSE){
-    FUN <- match.fun(as.character(spssToR))
-    rsyntax <- FUN(xChunks, dp)
+    # FUN <- match.fun(as.character(spssToR))
+    # rsyntax <- FUN(xChunks, dp)
+    stop('xChunks must be a list')
   } else {
     rsyntax <- unlist(lapply(1:length(spssToR), function(x) 
       do.call(spssToR[[x]], list(xChunks[[x]], dplyr, nosave))))

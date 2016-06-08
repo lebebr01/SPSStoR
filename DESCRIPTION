@@ -9,7 +9,6 @@ Description: This package turns SPSS syntax
 Depends:
     R (>= 3.1.0),
     stats,
-    methods,
     stringr
 LazyData: true
 RoxygenNote: 5.0.1
