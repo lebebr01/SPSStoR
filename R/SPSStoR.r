@@ -135,7 +135,7 @@ spss_to_r <- function(file, dplyr = TRUE, writeRscript = FALSE,
 
   if(writeRscript == TRUE){
     if(is.null(filePath) == TRUE){ filePath <- getwd()}
-    write.table(rsyntax, file = paste0(filePath, '/rScript.r'), row.names = FALSE, quote = FALSE,
+    utils::write.table(rsyntax, file = paste0(filePath, '/rScript.r'), row.names = FALSE, quote = FALSE,
                 col.names = FALSE)
   } else {
     class(rsyntax) <- "rsyntax"

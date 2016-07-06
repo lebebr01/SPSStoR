@@ -5,7 +5,7 @@
 #' @param x variable to compute standard error for the mean.
 #' @export 
 semean <- function(x){
-   stdev <- sd(x)
+   stdev <- stats::sd(x)
    n <- length(x)
    semean <- stdev/n
   return(semean)

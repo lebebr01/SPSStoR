@@ -10,5 +10,7 @@ Depends:
     R (>= 3.1.0),
     stats,
     stringr
+IMPORTS:
+    utils
 LazyData: true
 RoxygenNote: 5.0.1
