@@ -3,6 +3,24 @@
 language: r
 warnings_are_errors: true
 sudo: required
+cache: packages
+
+matrix:
+  include:
+    - os: linux
+      dist: precise
+      sudo: false
+    - os: linux
+      dist: trusty
+      env: R_CODECOV=true
+    - os: osx
+      osx_image: xcode8
+      brew_packages: poppler
+      latex: false
+    - os: osx
+      osx_image: beta-xcode6.2
+      disable_homebrew: true
+      latex: false
 
 env:
  global:

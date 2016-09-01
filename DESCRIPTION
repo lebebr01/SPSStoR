@@ -1,16 +1,21 @@
 Package: SPSStoR
-Maintainer: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
-Author: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
-Version: 0.2.1
-License: MIT + file LICENSE
-Title: SPSS syntax to R syntax
-Description: This package turns SPSS syntax
-    into comparable R syntax.
+Version: 0.3.0
+Author@R: person("Brandon", "LeBeau", email = "lebebr01+SPSStoR@gmail.com",
+      role = c("aut", "cre"))
+Title: Convert SPSS Syntax to R Syntax
+Description: It is common for users to have syntax or inherit syntax from different 
+    statistical programming languages. If a user is not proficient in that language,
+    it is helpful to convert the syntax into a syntax that is more familiar. The benefits
+    are that the user can better understand the syntax to implement. Another advantage is 
+    for new users of R that have working SPSS code to compare the converted syntax.
 Depends:
-    R (>= 3.1.0),
+    R (>= 3.3.0),
     stats,
     stringr
-IMPORTS:
+Imports:
     utils
+License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 5.0.1
+Author: Brandon LeBeau [aut, cre]
+Maintainer: Brandon LeBeau <lebebr01+SPSStoR@gmail.com>
