@@ -12,6 +12,8 @@ Depends:
     R (>= 3.3.0),
     stats,
     stringr
+Suggests:
+    shiny
 Imports:
     utils
 License: MIT + file LICENSE
