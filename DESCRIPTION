@@ -13,7 +13,8 @@ Depends:
     stats,
     stringr
 Suggests:
-    shiny
+    shiny,
+    testthat
 Imports:
     utils
 License: MIT + file LICENSE

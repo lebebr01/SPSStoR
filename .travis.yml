@@ -21,9 +21,12 @@ matrix:
       disable_homebrew: true
       latex: false
 
-env:
- global:
-   - CRAN: http://cran.rstudio.com
+cran: https://cran.rstudio.com/
+r_packages: 
+   - covr
+   
+after_success:
+   - Rscript -e 'library(covr); codecov()'
 
 notifications:
   email:
