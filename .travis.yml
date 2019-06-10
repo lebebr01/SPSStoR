@@ -2,24 +2,31 @@
 
 language: r
 warnings_are_errors: true
-sudo: required
+sudo: false
 cache: packages
 
 matrix:
   include:
     - os: linux
-      dist: precise
-      sudo: false
+      dist: trusty
+      env: R_CODECOV=true
+      r: oldrel
     - os: linux
       dist: trusty
       env: R_CODECOV=true
+      r: release
+    - os: linux
+      dist: trusty
+      env: R_CODECOV=true
+      r: devel
     - os: osx
-      osx_image: xcode8
-      latex: false
-    - os: osx
-      osx_image: beta-xcode6.2
+      osx_image: xcode10.1
       disable_homebrew: true
       latex: false
+    - os: osx
+      osx_image: xcode9.2
+      disable_homebrew: true
+latex: false
 
 cran: https://cran.rstudio.com/
 r_packages: 
