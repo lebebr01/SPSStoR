@@ -42,8 +42,7 @@ to do the same analysis or data management tasks.
 ## Installing Function
 
 ```r
-library(devtools)
-install_github("SPSStoR", username = "lebebr01")
+devtools::install_github("lebebr01/SPSStoR")
 library(SPSStoR)
 ```
 
